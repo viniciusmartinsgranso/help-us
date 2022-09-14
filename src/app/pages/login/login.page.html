@@ -1,0 +1,16 @@
+<div class="login">
+  <img class="login--sirene-img" src="assets/images/sirene.svg">
+  <img class="login--logo-img" src="assets/images/logo.svg">
+
+  <div class="login--form">
+    <p>E-mail</p>
+    <input (keydown.enter)="password.focus()" class="input-login" type="text" [(ngModel)]="loginPayload.email">
+    <p>Senha</p>
+    <input #password (keydown.enter)="login()" class="input-login" type="password" [(ngModel)]="loginPayload.password">
+  </div>
+  <a class="login--form--a">Criar uma conta!</a>
+  <a class="login--form--a" (click)="invitedLogin()">Entrar como convidado</a>
+  <ion-button [class.disable]="!canLogin() || isLoading" (click)="login()">
+    {{ isLoading ? 'Carregando...' : 'Entrar' }}
+  </ion-button>
+</div>
