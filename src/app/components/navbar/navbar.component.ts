@@ -10,7 +10,7 @@ import { NavbarItemInterface } from '../../models/interfaces/navbar-item.interfa
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent   {
 
   constructor(
     private readonly router: Router,

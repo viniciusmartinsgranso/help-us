@@ -1,27 +1,37 @@
-#container {
-  text-align: center;
+.home {
+  background: #2B2B2B;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 2rem 13vh 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  overflow: auto;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  &--logo {
+    width: 14rem;
+    height: 8rem;
+  }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
+  &--occurrence {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1rem;
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+    &--type {
+      height: auto;
+      background: #E79B29;
+      border-radius: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+      color: black;
+      text-align: center;
 
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+    }
+  }
 }
