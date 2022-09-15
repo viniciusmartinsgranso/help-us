@@ -1,5 +1,4 @@
 <div class="login">
-  <img class="login--sirene-img" src="assets/images/sirene.svg">
   <img class="login--logo-img" src="assets/images/logo.svg">
 
   <div class="login--form">
@@ -11,6 +10,6 @@
   <a class="login--form--a">Criar uma conta!</a>
   <a class="login--form--a" (click)="invitedLogin()">Entrar como convidado</a>
   <ion-button [class.disable]="!canLogin() || isLoading" (click)="login()">
-    {{ isLoading ? 'Carregando...' : 'Entrar' }}
+    {{ isLoading ? 'Carregando...' : 'Login' }}
   </ion-button>
 </div>
