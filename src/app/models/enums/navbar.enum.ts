@@ -1,5 +1,5 @@
 export enum NavbarEnum {
-  FEED = 1,
-  HOME = 2,
-  PROFILE = 3,
+  FEED = 0,
+  HOME = 1,
+  PROFILE = 2,
 }
