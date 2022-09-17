@@ -1,15 +1,31 @@
 <div class="login">
   <img class="login--logo-img" src="assets/images/logo.svg">
+  <label style="font-size: 1.3rem">Entre com sua conta</label>
 
   <div class="login--form">
-    <p>E-mail</p>
-    <input (keydown.enter)="password.focus()" class="input-login" type="text" [(ngModel)]="loginPayload.email">
-    <p>Senha</p>
-    <input #password (keydown.enter)="login()" class="input-login" type="password" [(ngModel)]="loginPayload.password">
+    <div class="login--form--login">
+      <img src="assets/images/user-login-icon.svg">
+      <input (keydown.enter)="password.focus()" class="login--form--login--input" type="text" placeholder="Email" [(ngModel)]="loginPayload.email">
+    </div>
+    <div class="login--form--login">
+      <img src="assets/images/user-password.svg">
+      <input #password (keydown.enter)="login()" class="login--form--login--input" type="password" placeholder="Senha" [(ngModel)]="loginPayload.password">
+    </div>
+    <span class="login--forgot">Esqueceu sua senha?</span>
+
   </div>
-  <a class="login--form--a">Criar uma conta!</a>
-  <a class="login--form--a" (click)="invitedLogin()">Entrar como convidado</a>
-  <ion-button [class.disable]="!canLogin() || isLoading" (click)="login()">
-    {{ isLoading ? 'Carregando...' : 'Login' }}
-  </ion-button>
+
+  <button class="login--enter-button" [class.disable]="!canLogin() || isLoading" (click)="login()">
+    {{ isLoading ? 'Carregando...' : 'ENTRAR' }}
+  </button>
+
+  <div class="login--or">
+    <img src="assets/images/line.svg" alt="">
+    <label>ou</label>
+    <img src="assets/images/line.svg" alt="">
+  </div>
+
+  <button class="login--invited" (click)="invitedLogin()">ENTRAR COMO CONVIDADO</button>
+
+  <h5 class="login--developed">DEVELOPED BY VINI</h5>
 </div>
