@@ -15,22 +15,32 @@
   }
 
   &--occurrence {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     gap: 1rem;
 
     &--type {
-      height: 13rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
       background: #E79B29;
       border-radius: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       font-size: 1.4rem;
       color: black;
+      padding: 1.2rem 0 1.2rem 1rem;
       text-align: center;
+
+      img {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      p {
+        margin: 0 0 0 1rem;
+        font-size: 1.2rem;
+      }
 
     }
   }
