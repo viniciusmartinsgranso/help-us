@@ -9,6 +9,19 @@
   gap: 2rem;
   overflow: auto;
 
+  &--hello {
+    font-size: 1.6rem;
+    width: 100%;
+
+    p {
+      margin: 0;
+    }
+
+    label {
+      color: #E79B29;
+    }
+  }
+
   &--logo {
     width: 14rem;
     height: 8rem;
@@ -29,19 +42,23 @@
       border-radius: 0.5rem;
       font-size: 1.4rem;
       color: black;
-      padding: 1.2rem 0 1.2rem 1rem;
+      padding: 1.2rem .8rem 1.2rem 1rem;
       text-align: center;
 
-      img {
-        width: 2rem;
-        height: 2rem;
-      }
+      &--align {
+        display: flex;
+        align-items: center;
 
-      p {
-        margin: 0 0 0 1rem;
-        font-size: 1.2rem;
-      }
+        img {
+          width: 2rem;
+          height: 2rem;
+        }
 
+        p {
+          margin: 0 0 0 1rem;
+          font-size: 1.2rem;
+        }
+      }
     }
   }
 }
