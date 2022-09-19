@@ -5,7 +5,34 @@
 }
 
 .finish-occurrence {
-  width: 70%;
-  height: 60%;
-  background: black;
+  width: 90vw;
+  height: 45vh;
+  background: #2B2B2B;
+  border-radius: 0.7rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h3 {
+    margin: 0;
+    font-size: 1.7rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.2rem;
+    width: 65vw;
+    color: #C0C0C0;
+    text-align: center;
+  }
+
+  button {
+    padding: 1.2rem 5rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    background: #E79B29;
+    color: black;
+  }
 }

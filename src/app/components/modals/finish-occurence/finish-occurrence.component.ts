@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-finish-occurence',
@@ -7,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinishOccurrenceComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly modalController: ModalController,
+  ) { }
 
   ngOnInit() {}
+
+  public async onClickExit(): Promise<void> {
+    await this.modalController.dismiss();
+  }
 
 }
