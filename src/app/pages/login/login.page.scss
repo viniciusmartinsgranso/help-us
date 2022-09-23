@@ -50,7 +50,7 @@
   }
 
   &--enter-button {
-    background: #E79B29;
+    background: var(--yellow-color);
     width: 100%;
     padding: 0.8rem 0 0.8rem 0;
     border-radius: 0.5rem;
@@ -67,11 +67,11 @@
 
   &--invited {
     background: transparent;
-    border: 0.1rem solid #E79B29;
+    border: 0.1rem solid var(--yellow-color);
     width: 100%;
     padding: 0.9rem 0 0.9rem 0;
     border-radius: 0.5rem;
-    color: #E79B29;
+    color: var(--yellow-color);
     font-size: 1.1rem;
   }
 

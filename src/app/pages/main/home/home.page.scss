@@ -18,7 +18,7 @@
     }
 
     label {
-      color: #E79B29;
+      color: var(--yellow-color);
     }
   }
 
@@ -38,7 +38,7 @@
       align-items: center;
       justify-content: space-between;
 
-      background: #E79B29;
+      background: var(--yellow-color);
       border-radius: 0.5rem;
       font-size: 1.4rem;
       color: black;

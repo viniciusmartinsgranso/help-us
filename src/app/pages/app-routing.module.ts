@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./main/feed/feed.module').then( m => m.FeedPageModule)
   },
   {
+    path: 'new-occurrence',
+    loadChildren: () => import('./main/new-occurrence/new-occurrence.module').then( m => m.NewOccurrencePageModule)
+  },
+  {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'

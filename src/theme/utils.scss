@@ -8,4 +8,5 @@
   --background: transparent;
   //{@link https://forum.ionicframework.com/t/cannot-dismiss-a-modal-by-clicking-the-backdrop-ionic-6/221459}
   --height: 100vh;
+  backdrop-filter: blur(0.1rem);
 }
