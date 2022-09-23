@@ -5,21 +5,21 @@
   </div>
   <h3 style="width: 100%; text-align: start;">Selecione o tipo de ocorrência</h3>
   <div class="home--occurrence">
-    <div class="home--occurrence--type" (click)="openModalCongrat()">
+    <div class="home--occurrence--type" (click)="redirectToType('0')">
       <div class="home--occurrence--type--align">
         <img src="assets/images/occurrence/batida.svg">
         <p>Acidente de trânsito</p>
       </div>
       <img src="assets/images/occurrence/arrow.svg">
     </div>
-    <div class="home--occurrence--type">
+    <div class="home--occurrence--type" (click)="redirectToType('1')">
       <div class="home--occurrence--type--align">
         <img src="assets/images/occurrence/incendio.svg">
         <p>Incêndio</p>
       </div>
       <img src="assets/images/occurrence/arrow.svg">
     </div>
-    <div class="home--occurrence--type">
+    <div class="home--occurrence--type" (click)="redirectToType('2')">
       <div class="home--occurrence--type--align">
         <img src="assets/images/occurrence/desmoronamento.svg">
         <p>Desmoronamento</p>

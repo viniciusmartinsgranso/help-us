@@ -24,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./main/feed/feed.module').then( m => m.FeedPageModule)
   },
   {
-    path: 'new-occurrence',
+    path: 'new-occurrence/:type',
     loadChildren: () => import('./main/new-occurrence/new-occurrence.module').then( m => m.NewOccurrencePageModule)
   },
   {
