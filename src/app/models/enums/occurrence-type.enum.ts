@@ -11,10 +11,3 @@ export const occurrenceTypeIconRecord: Record<OccurrenceTypeEnum, string> = {
   [OccurrenceTypeEnum.CAVE_IN]: 'assets/images/occurrence/desmoronamento.svg',
   [OccurrenceTypeEnum.COOP]: 'assets/images/occurrence/policia.svg',
 };
-
-export const occurrenceTypeTranslatedRecord: Record<OccurrenceTypeEnum, string> = {
-  [OccurrenceTypeEnum.CRASH]: 'Batida',
-  [OccurrenceTypeEnum.CAVE_IN]: 'Desmoronamento',
-  [OccurrenceTypeEnum.COOP]: 'Polícia',
-  [OccurrenceTypeEnum.FIRE]: 'Incêndio',
-};

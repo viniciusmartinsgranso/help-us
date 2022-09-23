@@ -4,7 +4,15 @@
   padding: 2rem 2rem 10vh 2rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   background: #2B2B2B;
+
+  &--menu {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
 
   &--label {
     display: flex;
@@ -26,7 +34,6 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-top: 2rem;
 
     img {
       position: absolute;
@@ -57,6 +64,16 @@
     input[type="file"] {
       display: none;
     }
+  }
+
+  &--submit {
+    border: 0.1rem dashed var(--yellow-color);
+    padding: 1rem 0 1rem 0;
+    width: 100%;
+    border-radius: 1rem;
+    background: var(--yellow-color);
+    font-size: 1.2rem;
+    color: black;
   }
 }
 

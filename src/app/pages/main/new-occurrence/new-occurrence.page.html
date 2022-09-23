@@ -1,4 +1,8 @@
 <div class="new-occurrence">
+  <div class="new-occurrence--menu">
+    <img src="assets/images/back-arrow.svg" [routerLink]="['/home']">
+    <label>Nova ocorrência</label>
+  </div>
   <div class="new-occurrence--label">
     <h1>Tipo:</h1>
     <p>{{ type }}</p>
@@ -15,8 +19,9 @@
     <img src="assets/images/location-occurrence.svg" alt="" title="Ao clicar na imagem, será selecionada a sua geolocalização atual.">
     <input class="new-occurrence--form--input" type="text" [(ngModel)]="occurrence.location" placeholder="Localização">
   </div>
-<!--  <div class="new-occurrence&#45;&#45;form">-->
-<!--    <label (click)="inputElement.click()"> Selecionar a imagem da ocorrência</label>-->
-<!--    <input #inputElement type="file">-->
-<!--  </div>-->
+  <div class="new-occurrence--form">
+    <label (click)="inputElement.click()"> Selecionar a imagem da ocorrência</label>
+    <input #inputElement type="file">
+  </div>
+  <button class="new-occurrence--submit" (click)="postNewOccurrence()">Criar ocorrência</button>
 </div>

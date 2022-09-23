@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { OccurrenceTypeEnum, occurrenceTypeTranslatedRecord } from '../../../models/enums/occurrence-type.enum';
+import { ModalController } from '@ionic/angular';
+import { FinishOccurrenceComponent } from '../../../components/modals/finish-occurence/finish-occurrence.component';
 import { NewOccurrencePayload } from '../../../models/payloads/new-occurrence.payload';
+import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 
 @Component({
   selector: 'app-new-occurrence',
@@ -12,6 +14,7 @@ export class NewOccurrencePage implements OnInit {
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
+    private readonly modalController: ModalController,
   ) {
     this.type = this.activatedRoute.snapshot.params.type;
     console.log(this.type);
@@ -24,7 +27,9 @@ export class NewOccurrencePage implements OnInit {
     iconUrl: '',
   };
 
-  public type: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslatedRecord;
+  public type: number = 0;
+
+  public occurrenceList: OccurrenceProxy;
 
 
   ngOnInit() {
@@ -42,4 +47,16 @@ export class NewOccurrencePage implements OnInit {
   //     console.log('Error: ', error);
   //   };
   // }
+
+  public async postNewOccurrence(): Promise<void> {
+    console.log(this.occurrence);
+
+    const modal = await this.modalController.create({
+      mode: 'md',
+      component: FinishOccurrenceComponent,
+      cssClass: 'background-profile-modal'
+    });
+
+    await modal.present();
+  }
 }
