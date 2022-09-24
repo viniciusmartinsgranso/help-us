@@ -66,7 +66,7 @@ export class NewOccurrencePage implements OnInit {
   }
 
   public canPost(): boolean {
-    if (!this.occurrence.description && !this.occurrence.title && !this.occurrence.location) return false;
+    if (!this.occurrence.description.length && !this.occurrence.title.length && !this.occurrence.location.length) return false;
 
     return true;
   }
