@@ -13,7 +13,7 @@ import { NewOccurrencePage } from './new-occurrence.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    NewOccurrencePageRoutingModule
+    NewOccurrencePageRoutingModule,
   ],
   declarations: [NewOccurrencePage]
 })
