@@ -28,11 +28,9 @@ export class NewOccurrencePage implements OnInit {
     iconUrl: '',
   };
 
-  public type: Record<number, string> = {
-    0: 'Batida',
-    1: 'Incêndio',
-    2: 'Desmoronamento',
-  };
+  public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;
+
+  public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
 
   public occurrenceList: OccurrenceProxy;
 
