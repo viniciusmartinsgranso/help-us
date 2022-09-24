@@ -40,7 +40,7 @@
     display: flex;
     align-items: center;
 
-    img {
+    &--icon {
       position: absolute;
       left: 0.6rem;
     }
@@ -68,6 +68,10 @@
 
     input[type="file"] {
       display: none;
+    }
+
+    &--img {
+
     }
   }
 

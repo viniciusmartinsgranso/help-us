@@ -38,18 +38,18 @@ export class NewOccurrencePage implements OnInit {
   ngOnInit() {
   }
 
-  // public getBase64(event: any): void {
-  //   const file = event.target.files;
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = () => {
-  //     this.feed-occurrence.iconUrl = reader.result.toString();
-  //     console.log(this.feed-occurrence.iconUrl);
-  //   };
-  //   reader.onerror = error => {
-  //     console.log('Error: ', error);
-  //   };
-  // }
+  public getBase64(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.occurrence.iconUrl = reader.result.toString();
+      console.log(this.occurrence.iconUrl);
+    };
+    reader.onerror = error => {
+      console.log('Error: ', error);
+    };
+  }
 
   public async postNewOccurrence(): Promise<void> {
     console.log(this.occurrence);

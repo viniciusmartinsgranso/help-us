@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="new-occurrence--form">
-    <img src="assets/images/text-occurrence.svg" alt="">
+    <img class="new-occurrence--form--icon" src="assets/images/text-occurrence.svg" alt="">
     <input class="new-occurrence--form--input" type="text" placeholder="Título" [(ngModel)]="occurrence.title">
   </div>
   <div class="new-occurrence--form">
@@ -15,12 +15,13 @@
     <textarea class="new-occurrence--form--input" placeholder="Descrição" cols="3" rows="10" [(ngModel)]="occurrence.description"></textarea>
   </div>
   <div class="new-occurrence--form">
-    <img src="assets/images/location-occurrence.svg" alt="">
+    <img class="new-occurrence--form--icon" src="assets/images/location-occurrence.svg" alt="">
     <input class="new-occurrence--form--input" type="text" [(ngModel)]="occurrence.location" placeholder="Localização">
   </div>
   <div class="new-occurrence--form">
-    <label (click)="inputElement.click()"> Selecionar a imagem da ocorrência</label>
-    <input #inputElement type="file">
+    <label *ngIf="!occurrence.iconUrl;" (click)="inputElement.click()"> Selecionar a imagem da ocorrência</label>
+    <input #inputElement type="file" accept="image/png, image/jpg, image/jpeg" (change)="getBase64($event)">
+    <img class="new-occurrence--form--img" [src]="occurrence.iconUrl">
   </div>
   <button class="new-occurrence--submit" (click)="postNewOccurrence()" [class.disable]="!canPost()" >Criar ocorrência</button>
 </div>
