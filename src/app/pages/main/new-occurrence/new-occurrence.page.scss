@@ -4,16 +4,9 @@
   padding: 2rem 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   background: #2B2B2B;
   overflow: auto;
-
-  &--menu {
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
 
   &--titles {
     display: flex;

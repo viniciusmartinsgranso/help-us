@@ -20,7 +20,7 @@ export class HomePage {
 
   public async redirectToType(type: string): Promise<void> {
     console.log(type);
-    await this.router.navigate(['new-occurrence/', type]);
+    await this.router.navigate(['new-feed-occurrence/', type]);
   }
 
 }

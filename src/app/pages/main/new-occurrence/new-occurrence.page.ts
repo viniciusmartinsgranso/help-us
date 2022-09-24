@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { FinishOccurrenceComponent } from '../../../components/modals/finish-occurence/finish-occurrence.component';
+import { OccurrenceTypeEnum, occurrenceTypeTranslate } from '../../../models/enums/occurrence-type.enum';
 import { NewOccurrencePayload } from '../../../models/payloads/new-occurrence.payload';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 
@@ -27,7 +28,11 @@ export class NewOccurrencePage implements OnInit {
     iconUrl: '',
   };
 
-  public type: number = 0;
+  public type: Record<number, string> = {
+    0: 'Batida',
+    1: 'Incêndio',
+    2: 'Desmoronamento',
+  };
 
   public occurrenceList: OccurrenceProxy;
 
@@ -40,8 +45,8 @@ export class NewOccurrencePage implements OnInit {
   //   const reader = new FileReader();
   //   reader.readAsDataURL(file);
   //   reader.onload = () => {
-  //     this.occurrence.iconUrl = reader.result.toString();
-  //     console.log(this.occurrence.iconUrl);
+  //     this.feed-occurrence.iconUrl = reader.result.toString();
+  //     console.log(this.feed-occurrence.iconUrl);
   //   };
   //   reader.onerror = error => {
   //     console.log('Error: ', error);

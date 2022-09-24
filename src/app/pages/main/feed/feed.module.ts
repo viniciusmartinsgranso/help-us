@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { FeedOccurrenceComponent } from '../../../components/feed-occurrence/feed-occurrence.component';
 
 import { FeedPageRoutingModule } from './feed-routing.module';
 
@@ -13,8 +14,8 @@ import { FeedPage } from './feed.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedPageRoutingModule
+    FeedPageRoutingModule,
   ],
-  declarations: [FeedPage]
+  declarations: [FeedPage, FeedOccurrenceComponent],
 })
 export class FeedPageModule {}
