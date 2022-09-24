@@ -18,10 +18,10 @@
     <img class="new-occurrence--form--icon" src="assets/images/location-occurrence.svg" alt="">
     <input class="new-occurrence--form--input" type="text" [(ngModel)]="occurrence.location" placeholder="Localização">
   </div>
-  <div class="new-occurrence--form">
+  <div class="new-occurrence--occurrence-image" [style.padding]="!occurrence.iconUrl ? '1rem 0 1rem 0' : '0'">
     <label *ngIf="!occurrence.iconUrl;" (click)="inputElement.click()"> Selecionar a imagem da ocorrência</label>
     <input #inputElement type="file" accept="image/png, image/jpg, image/jpeg" (change)="getBase64($event)">
-    <img class="new-occurrence--form--img" [src]="occurrence.iconUrl">
+    <img [class.new-occurrence--occurrence-image--img]="occurrence.iconUrl" [src]="occurrence.iconUrl">
   </div>
   <button class="new-occurrence--submit" (click)="postNewOccurrence()" [class.disable]="!canPost()" >Criar ocorrência</button>
 </div>

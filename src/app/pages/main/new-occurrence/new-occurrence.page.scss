@@ -55,23 +55,24 @@
       color: black;
       resize: none;
     }
+  }
 
-    label {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 0.1rem dashed var(--yellow-color);
-      padding: 1rem 0 1rem 0;
-      width: 100%;
-      border-radius: 1rem;
-    }
+  &--occurrence-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.1rem dashed var(--yellow-color);
+    width: 100%;
+    border-radius: 1rem;
 
     input[type="file"] {
       display: none;
     }
 
     &--img {
-
+      width: 100%;
+      height: 100%;
+      border-radius: 1rem;
     }
   }
 

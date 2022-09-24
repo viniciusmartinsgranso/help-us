@@ -24,7 +24,7 @@ export class NewOccurrencePage implements OnInit {
   public occurrence: NewOccurrencePayload = {
     title: '',
     description: '',
-    location:'',
+    location: '',
     iconUrl: '',
   };
 
@@ -33,7 +33,6 @@ export class NewOccurrencePage implements OnInit {
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
 
   public occurrenceList: OccurrenceProxy;
-
 
   ngOnInit() {
   }
@@ -57,15 +56,23 @@ export class NewOccurrencePage implements OnInit {
     const modal = await this.modalController.create({
       mode: 'md',
       component: FinishOccurrenceComponent,
-      cssClass: 'background-profile-modal'
+      cssClass: 'background-profile-modal',
     });
 
     await modal.present();
   }
 
   public canPost(): boolean {
-    if (!this.occurrence.description.length && !this.occurrence.title.length && !this.occurrence.location.length) return false;
+    if (this.occurrence.title.length < 5)
+      return false;
+
+    if (this.occurrence.description.length < 5)
+      return false;
+
+    if (this.occurrence.location.length < 5)
+      return false;
 
     return true;
   }
+
 }
