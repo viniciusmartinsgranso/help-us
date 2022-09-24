@@ -22,5 +22,5 @@
     <label (click)="inputElement.click()"> Selecionar a imagem da ocorrência</label>
     <input #inputElement type="file">
   </div>
-  <button class="new-occurrence--submit" (click)="postNewOccurrence()">Criar ocorrência</button>
+  <button class="new-occurrence--submit" (click)="postNewOccurrence()" [class.disable]="!canPost()" >Criar ocorrência</button>
 </div>

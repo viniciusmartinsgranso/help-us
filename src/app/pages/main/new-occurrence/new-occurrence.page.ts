@@ -64,4 +64,10 @@ export class NewOccurrencePage implements OnInit {
 
     await modal.present();
   }
+
+  public canPost(): boolean {
+    if (!this.occurrence.description && !this.occurrence.title && !this.occurrence.location) return false;
+
+    return true;
+  }
 }

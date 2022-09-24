@@ -81,3 +81,8 @@
   left: 0.6rem;
   top: 1rem;
 }
+
+.disable {
+  opacity: .3;
+  pointer-events: none;
+}
