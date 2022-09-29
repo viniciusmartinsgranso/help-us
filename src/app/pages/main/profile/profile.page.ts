@@ -9,6 +9,14 @@ export class ProfilePage implements OnInit {
 
   constructor() { }
 
+  public user = {
+    imageUrl: '',
+    name: '',
+    role: '',
+  };
+
+  public isLoading: boolean = false;
+
   ngOnInit() {
   }
 

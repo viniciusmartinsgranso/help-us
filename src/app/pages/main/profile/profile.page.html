@@ -1,9 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="profile">
+  <div class="profile--modal">
+    <div class="profile--modal--content">
+      <div class="profile--modal--content--user">
 
-<ion-content>
+        <div class="profile--modal--content--user--pic">
+          <img [src]="user?.imageUrl || 'assets/images/vini.jpg'">
+        </div>
 
-</ion-content>
+        <div class="profile--modal--content--user--menu">
+          <img src="assets/images/profile-menu-options.svg">
+        </div>
+
+        <div class="profile--modal--content--user--labels">
+          <label class="profile--modal--content--user--labels--name">{{ user?.name }}</label>
+          <br>
+          <label class="profile--modal--content--user--labels--job">{{ user?.role || 'Dev' }}</label>
+        </div>
+
+      </div>
+
+      <div class="profile--modal--content--posts">
+        <div class="profile--modal--content--posts--title">
+          <h4 style="font-weight: bold;">OCORRENCIAS PUBLICAS</h4>
+        </div>
+
+        <div class="profile--modal--content--posts--my-posts">
+          <ng-container *ngIf="!isLoading; else loading">
+
+          </ng-container>
+        </div>
+        <ng-template #loading>
+          <app-half-circle-spinner></app-half-circle-spinner>
+        </ng-template>
+
+      </div>
+    </div>
+  </div>
+</div>
