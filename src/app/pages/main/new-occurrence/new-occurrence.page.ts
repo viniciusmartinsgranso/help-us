@@ -21,18 +21,42 @@ export class NewOccurrencePage implements OnInit {
     console.log(this.type);
   }
 
-  public occurrence: NewOccurrencePayload = {
+  public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;
+
+  public occurrence: OccurrenceProxy = {
+    id: 4,
     title: '',
     description: '',
     location: '',
-    iconUrl: '',
+    photoUrl: '',
+    type: this.type,
   };
-
-  public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;
 
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
 
-  public occurrenceList: OccurrenceProxy;
+  public occurrenceList: OccurrenceProxy[] = [
+    {
+      title: 'aaaa',
+      description: 'dfwefwe',
+      location: 'er23r32',
+      type: OccurrenceTypeEnum.CRASH,
+      id: 1,
+    },
+    {
+      title: 'bbbbb',
+      description: 'dfwefwe',
+      location: 'er23r32',
+      type: OccurrenceTypeEnum.CRASH,
+      id: 2,
+    },
+    {
+      title: 'cccccc',
+      description: 'dfwefwe',
+      location: 'er23r32',
+      type: OccurrenceTypeEnum.CRASH,
+      id: 3,
+    },
+  ];
 
   ngOnInit() {
   }
@@ -42,8 +66,8 @@ export class NewOccurrencePage implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.occurrence.iconUrl = reader.result.toString();
-      console.log(this.occurrence.iconUrl);
+      this.occurrence.photoUrl = reader.result.toString();
+      console.log(this.occurrence.photoUrl);
     };
     reader.onerror = error => {
       console.log('Error: ', error);
@@ -51,7 +75,12 @@ export class NewOccurrencePage implements OnInit {
   }
 
   public async postNewOccurrence(): Promise<void> {
+    console.log(this.occurrenceList);
     console.log(this.occurrence);
+
+    this.occurrenceList.push(this.occurrence);
+
+    console.log(this.occurrenceList);
 
     const modal = await this.modalController.create({
       mode: 'md',
