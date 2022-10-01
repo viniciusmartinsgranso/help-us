@@ -54,13 +54,18 @@
     }
 
     &--submit-button {
+      background: var(--yellow-color);
       width: 100%;
-      padding: 1rem 0;
-      background: transparent;
-      border: 0.1rem solid var(--yellow-color);
+      padding: 0.8rem 0 0.8rem 0;
       border-radius: 0.5rem;
+      color: #2A2A2A;
       font-size: 1.2rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
   }
+}
+
+.disable {
+  opacity: .3;
+  pointer-events: none;
 }
