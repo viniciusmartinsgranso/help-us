@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./main/new-occurrence/new-occurrence.module').then( m => m.NewOccurrencePageModule)
   },
   {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'

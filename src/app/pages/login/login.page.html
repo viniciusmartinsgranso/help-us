@@ -11,7 +11,7 @@
       <img src="assets/images/user-password.svg">
       <input #password (keydown.enter)="login()" class="login--form--login--input" type="password" placeholder="Senha" [(ngModel)]="loginPayload.password">
     </div>
-    <span class="login--forgot">Esqueceu sua senha?</span>
+    <span class="login--forgot" (click)="router.navigate(['/register'])">Registrar-se</span>
 
   </div>
 

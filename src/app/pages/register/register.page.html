@@ -1,0 +1,38 @@
+<div class="register">
+  <div class="register--navbar">
+    <img class="register--navbar--back" src="assets/images/back-arrow.svg" (click)="router.navigate(['/login'])">
+    <img class="register--navbar--logo" src="assets/images/logo.svg">
+  </div>
+
+  <div class="register--form">
+    <div class="register--form--register">
+      <img src="assets/images/user-login-icon.svg">
+      <input class="register--form--register--input" type="text" placeholder="Nome" [(ngModel)]="user.name">
+    </div>
+
+    <div class="register--form--register">
+      <img src="assets/images/user-login-icon.svg">
+      <input class="register--form--register--input" type="text" placeholder="Email" [(ngModel)]="user.email">
+    </div>
+
+    <div class="register--form--register">
+      <img src="assets/images/user-login-icon.svg">
+      <input class="register--form--register--input" type="text" placeholder="Cidade" [(ngModel)]="user.city">
+    </div>
+
+    <div class="register--form--register">
+      <img src="assets/images/user-password.svg">
+      <input class="register--form--register--input" type="password" placeholder="Senha" [(ngModel)]="user.password">
+    </div>
+
+    <div class="register--form--register">
+      <img src="assets/images/user-password.svg">
+      <input class="register--form--register--input" type="password" placeholder="Confirme sua senha" [(ngModel)]="user.confirmPassword">
+    </div>
+
+    <img style="width: 100%" src="assets/images/line.svg">
+
+    <button class="register--form--submit-button">Registrar-se</button>
+
+  </div>
+</div>

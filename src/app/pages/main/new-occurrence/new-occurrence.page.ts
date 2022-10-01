@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { FinishOccurrenceComponent } from '../../../components/modals/finish-occurence/finish-occurrence.component';
 import { OccurrenceTypeEnum, occurrenceTypeTranslate } from '../../../models/enums/occurrence-type.enum';
+import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
 import { NewOccurrencePayload } from '../../../models/payloads/new-occurrence.payload';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 
@@ -34,29 +35,7 @@ export class NewOccurrencePage implements OnInit {
 
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
 
-  public occurrenceList: OccurrenceProxy[] = [
-    {
-      title: 'aaaa',
-      description: 'dfwefwe',
-      location: 'er23r32',
-      type: OccurrenceTypeEnum.CRASH,
-      id: 1,
-    },
-    {
-      title: 'bbbbb',
-      description: 'dfwefwe',
-      location: 'er23r32',
-      type: OccurrenceTypeEnum.CRASH,
-      id: 2,
-    },
-    {
-      title: 'cccccc',
-      description: 'dfwefwe',
-      location: 'er23r32',
-      type: OccurrenceTypeEnum.CRASH,
-      id: 3,
-    },
-  ];
+  public occurrenceList: OccurrenceProxy[] = mockedOccurrences;
 
   ngOnInit() {
   }

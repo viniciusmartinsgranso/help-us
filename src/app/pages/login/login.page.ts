@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
   }
 
   public async invitedLogin(): Promise<void> {
-    await this.helperService.showToast('Você entrou no modo convidado e não poderá publicar seu alerta no feed.');
+    await this.helperService.showToast('Você entrou no modo convidado e não poderá publicar seu alerta no feed.', 1000);
     await this.router.navigate(['/home']);
   }
 

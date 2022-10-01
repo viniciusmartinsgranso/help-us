@@ -5,6 +5,6 @@ export interface CreateUserPayload {
 }
 
 export interface RegisterPayload extends CreateUserPayload {
+  city: string;
   confirmPassword: string;
-  confirmEmail: string;
 }

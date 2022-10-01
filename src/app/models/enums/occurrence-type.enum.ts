@@ -18,3 +18,10 @@ export const occurrenceTypeTranslate: Record<OccurrenceTypeEnum, string> = {
   [OccurrenceTypeEnum.CAVE_IN]: 'Desmoronamento',
   [OccurrenceTypeEnum.COOP]: 'Policia',
 };
+
+export const occurrenceTypeImage: Record<OccurrenceTypeEnum, string> = {
+  [OccurrenceTypeEnum.FIRE]: 'src/assets/images/occurrence/incendio.svg',
+  [OccurrenceTypeEnum.COOP]: 'src/assets/images/occurrence/policia.svg',
+  [OccurrenceTypeEnum.CRASH]: 'src/assets/images/occurrence/batida.svg',
+  [OccurrenceTypeEnum.CAVE_IN]: 'src/assets/images/occurrence/desmoronamento.svg'
+};
