@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreateUserPayload, RegisterPayload } from '../../models/payloads/register.payload';
+import { HelperService } from '../../services/helper';
 import { CustomValidators } from '../../utils/validators';
 import isValidEmail = CustomValidators.isValidEmail;
 import isValidPassword = CustomValidators.isValidPassword;
@@ -14,6 +15,7 @@ export class RegisterPage implements OnInit {
 
   constructor(
     public readonly router: Router,
+    private readonly helper: HelperService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class RegisterPage implements OnInit {
     this.isLoading = true;
 
     await this.router.navigate(['/home']);
+    await this.helper.showToast('Bem vindo(a) ao Help-Us!');
 
     this.isLoading = false;
   }
