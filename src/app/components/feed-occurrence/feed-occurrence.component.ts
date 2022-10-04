@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { OccurrenceTypeEnum, occurrenceTypeTranslate, occurrenceTypeWhiteImage } from '../../models/enums/occurrence-type.enum';
 import { mockedOccurrences } from '../../models/mocks/occurrence.mock';
 import { OccurrenceProxy } from '../../models/proxies/occurrence.proxy';
 
@@ -15,6 +16,8 @@ export class FeedOccurrenceComponent implements OnInit {
   public occurrence: OccurrenceProxy;
 
   public occurrenceList: OccurrenceProxy[] = mockedOccurrences;
+
+  public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeWhiteImage;
 
   ngOnInit() {}
 

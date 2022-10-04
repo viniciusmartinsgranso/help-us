@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
+import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 
 @Component({
   selector: 'app-feed',
@@ -11,5 +13,7 @@ export class FeedPage implements OnInit {
 
   ngOnInit() {
   }
+
+  public occurrenceList: OccurrenceProxy[] = mockedOccurrences;
 
 }

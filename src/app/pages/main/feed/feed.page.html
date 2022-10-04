@@ -1,5 +1,10 @@
 <div class="feed">
-  <div class="feed--item">
-    <app-feed-occurrence></app-feed-occurrence>
-  </div>
+  <ng-container *ngFor="let occurrence of occurrenceList">
+    <div class="feed--item">
+      <app-feed-occurrence
+        [occurrence]="occurrence"
+      ></app-feed-occurrence>
+    </div>
+  </ng-container>
+
 </div>

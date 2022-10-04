@@ -19,9 +19,9 @@ export const occurrenceTypeTranslate: Record<OccurrenceTypeEnum, string> = {
   [OccurrenceTypeEnum.COOP]: 'Policia',
 };
 
-export const occurrenceTypeImage: Record<OccurrenceTypeEnum, string> = {
-  [OccurrenceTypeEnum.FIRE]: 'src/assets/images/occurrence/incendio.svg',
-  [OccurrenceTypeEnum.COOP]: 'src/assets/images/occurrence/policia.svg',
-  [OccurrenceTypeEnum.CRASH]: 'src/assets/images/occurrence/batida.svg',
-  [OccurrenceTypeEnum.CAVE_IN]: 'src/assets/images/occurrence/desmoronamento.svg'
+export const occurrenceTypeWhiteImage: Record<OccurrenceTypeEnum, string> = {
+  [OccurrenceTypeEnum.FIRE]: 'assets/images/occurrence/incendio-white.svg',
+  [OccurrenceTypeEnum.COOP]: 'assets/images/occurrence/policia-white.svg',
+  [OccurrenceTypeEnum.CRASH]: 'assets/images/occurrence/batida-white.svg',
+  [OccurrenceTypeEnum.CAVE_IN]: 'assets/images/occurrence/desmoronamento-white.svg'
 };
