@@ -52,8 +52,7 @@
 
   &--content {
     padding: 2rem 1rem 1rem 1rem;
-    min-height: 30rem;
-    max-height: 30rem;
+    height: auto;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -69,6 +68,11 @@
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 8;
       line-clamp: 8;
+    }
+
+    &--img {
+      border-radius: .5rem;
+      border: 0.1rem dashed var(--yellow-color);
     }
   }
 }

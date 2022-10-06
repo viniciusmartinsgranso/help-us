@@ -5,11 +5,11 @@
     </div>
     <div class="feed-occurrence--header--user">
       <ion-avatar>
-        <img [src]="occurrence.photoUrl ? occurrence.photoUrl : 'assets/images/vini.jpg'">
+        <img [src]="occurrence.userPhoto ? occurrence.userPhoto : 'assets/images/user.jpg'">
       </ion-avatar>
       <div class="feed-occurrence--header--user--detail">
-        <label class="feed-occurrence--header--user--detail--name">Vini</label>
-        <label class="feed-occurrence--header--user--detail--location">Sorocaba</label>
+        <label class="feed-occurrence--header--user--detail--name">{{ occurrence.user }}</label>
+        <label class="feed-occurrence--header--user--detail--location">{{ occurrence.location }}</label>
       </div>
     </div>
   </div>
@@ -20,5 +20,6 @@
     <div class="feed-occurrence--content--description">
       {{ occurrence.title }}
     </div>
+    <img *ngIf="occurrence.photoUrl" class="feed-occurrence--content--img" [src]="occurrence.photoUrl">
   </div>
 </div>

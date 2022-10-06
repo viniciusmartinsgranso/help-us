@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { OccurrenceTypeEnum, occurrenceTypeTranslate, occurrenceTypeWhiteImage } from '../../models/enums/occurrence-type.enum';
+import { OccurrenceTypeEnum, occurrenceTypeWhiteImage } from '../../models/enums/occurrence-type.enum';
 import { mockedOccurrences } from '../../models/mocks/occurrence.mock';
 import { OccurrenceProxy } from '../../models/proxies/occurrence.proxy';
 

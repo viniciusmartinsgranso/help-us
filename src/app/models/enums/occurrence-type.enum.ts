@@ -6,7 +6,7 @@ export enum OccurrenceTypeEnum {
 }
 
 export const occurrenceTypeIconRecord: Record<OccurrenceTypeEnum, string> = {
-  [OccurrenceTypeEnum.CRASH]: 'src/assets/images/occurrence/batida.svg',
+  [OccurrenceTypeEnum.CRASH]: 'assets/images/occurrence/batida.svg',
   [OccurrenceTypeEnum.FIRE]: 'assets/images/occurrence/incendio.svg',
   [OccurrenceTypeEnum.CAVE_IN]: 'assets/images/occurrence/desmoronamento.svg',
   [OccurrenceTypeEnum.COOP]: 'assets/images/occurrence/policia.svg',
