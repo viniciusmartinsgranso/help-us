@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { FinishOccurrenceComponent } from '../../../components/modals/finish-occurence/finish-occurrence.component';
 import { OccurrenceTypeEnum, occurrenceTypeTranslate } from '../../../models/enums/occurrence-type.enum';
-import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
-import { NewOccurrencePayload } from '../../../models/payloads/new-occurrence.payload';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { OccurrenceService } from '../../../services/occurrence.service';
 
@@ -22,22 +20,31 @@ export class NewOccurrencePage implements OnInit {
   ) {
     this.type = this.activatedRoute.snapshot.params.type;
     console.log(this.type);
+
+    const lastItem = JSON.parse(localStorage.getItem('occurrences'));
+    if (lastItem[lastItem.length -1].id < 0) {
+      this.occurrence.id = 1;
+    } else {
+      this.occurrence.id = lastItem[lastItem.length -1].id + 1;
+    }
   }
 
   public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;
 
-  public occurrence: OccurrenceProxy = {
-    id: 4,
-    title: '',
-    description: '',
-    location: '',
-    photoUrl: '',
-    type: this.type,
-  };
+  // public occurrence: OccurrenceProxy = {
+  //   id: 4,
+  //   title: '',
+  //   description: '',
+  //   location: '',
+  //   photoUrl: '',
+  //   type: this.type,
+  // };
+
+  public occurrence: OccurrenceProxy;
 
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
 
-  public occurrenceList: OccurrenceProxy[] = mockedOccurrences;
+  public occurrenceList: OccurrenceProxy[] = [];
 
   ngOnInit() {
   }
@@ -56,10 +63,7 @@ export class NewOccurrencePage implements OnInit {
   }
 
   public async postNewOccurrence(): Promise<void> {
-    console.log(this.occurrenceList);
-    console.log(this.occurrence);
-
-    this.occurrenceService.createOccurrence(this.occurrence);
+    this.occurrenceService.create(this.occurrence);
 
     // this.occurrenceList.push(this.occurrence);
 

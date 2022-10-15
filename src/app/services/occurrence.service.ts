@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { OccurrenceTypeEnum } from '../models/enums/occurrence-type.enum';
 import { NewOccurrencePayload } from '../models/payloads/new-occurrence.payload';
 import { OccurrenceProxy } from '../models/proxies/occurrence.proxy';
 
@@ -12,36 +13,40 @@ export class OccurrenceService {
   public occurrence: NewOccurrencePayload[] = [
     {
       id: 0,
-      location: '',
-      iconUrl: '',
-      description: '',
-      title: '',
-      userId: 0,
+      title: 'Batida',
+      location: 'Sorocaba',
+      photoUrl: 'src/assets/images/vini.jpg',
+      description: 'aaaaaaaaaa',
+      type: OccurrenceTypeEnum.COOP,
     },
   ];
 
-  public getOccurrences(list: OccurrenceProxy[]): void {
-    list = JSON.parse(localStorage.getItem('occurrences'));
+  public get(): any {
+    const list = JSON.parse(localStorage.getItem('occurrences'));
+    console.log(list);
 
     if (!list) {
-      localStorage.setItem('users', JSON.stringify(this.occurrence));
+      return localStorage.setItem('occurrences', JSON.stringify(this.occurrence));
     }
+    return list;
   }
 
-  public createOccurrence(occurrence: NewOccurrencePayload): void {
+  public create(occurrence: NewOccurrencePayload): void {
     const storage = JSON.parse(localStorage.getItem('occurrences'));
+    console.log(occurrence);
+    console.log(storage);
     storage.push(occurrence);
     localStorage.setItem('occurrences', JSON.stringify(storage));
   }
 
-  public onUpdateOccurrence(occurrence: OccurrenceProxy): void {
+  public update(occurrence: OccurrenceProxy): void {
     const storage = JSON.parse(localStorage.getItem('occurrences'));
 
     storage.push(occurrence[0]);
     localStorage.setItem('occurrences', JSON.stringify(storage));
   }
 
-  public async onDeleteOccurrence(occurrence: number): Promise<void> {
+  public async delete(occurrence: number): Promise<void> {
     const storage = JSON.parse(localStorage.getItem('occurrences'));
     console.log(storage);
 

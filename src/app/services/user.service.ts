@@ -9,8 +9,6 @@ export class UserService {
 
   constructor() { }
 
-  public usersList: UserProxy[] = [];
-
   public user: CreateUserPayload[] = [
     {
       name: '',
@@ -19,28 +17,28 @@ export class UserService {
     }
   ];
 
-  public getUsers(): void {
-    this.usersList = JSON.parse(localStorage.getItem('users'));
+  public get(list: UserProxy[]): void {
+    list = JSON.parse(localStorage.getItem('users'));
 
-    if (!this.usersList) {
+    if (!list) {
       localStorage.setItem('users', JSON.stringify(this.user));
     }
   }
 
-  public createUser(user: CreateUserPayload): void {
+  public create(user: CreateUserPayload): void {
     const storage = JSON.parse(localStorage.getItem('users'));
     storage.push(user);
     localStorage.setItem('users', JSON.stringify(storage));
   }
 
-  public onUpdateUser(user: UserProxy): void {
+  public update(user: UserProxy): void {
     const storage = JSON.parse(localStorage.getItem('users'));
 
     storage.push(user[0]);
     localStorage.setItem('users', JSON.stringify(storage));
   }
 
-  public async onDeleteUser(user: number): Promise<void> {
+  public async delete(user: number): Promise<void> {
     const storage = JSON.parse(localStorage.getItem('users'));
     console.log(storage);
 

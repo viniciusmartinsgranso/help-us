@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
 import { mockedUsers } from '../../../models/mocks/user.mock';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { UserProxy } from '../../../models/proxies/user.proxy';
@@ -24,7 +23,7 @@ export class ProfilePage implements OnInit {
 
   public isLoading: boolean = false;
 
-  public occurrences: OccurrenceProxy[] = mockedOccurrences;
+  public occurrences: OccurrenceProxy[] = [];
 
   public occurrence: OccurrenceProxy;
 

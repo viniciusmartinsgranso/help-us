@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
+import { OccurrenceService } from '../../../services/occurrence.service';
 
 @Component({
   selector: 'app-feed',
@@ -9,11 +9,21 @@ import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 })
 export class FeedPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private readonly occurrenceService: OccurrenceService,
+  ) { }
 
   ngOnInit() {
   }
 
-  public occurrenceList: OccurrenceProxy[] = mockedOccurrences;
+  public occurrenceList: OccurrenceProxy[] = [];
+
+  public async ionViewDidEnter(): Promise<void> {
+    this.getOccurrences();
+  }
+
+  public getOccurrences(): void {
+    this.occurrenceList.push(this.occurrenceService.get());
+  }
 
 }
