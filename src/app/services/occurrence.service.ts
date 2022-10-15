@@ -13,7 +13,7 @@ export class OccurrenceService {
   public occurrence: NewOccurrencePayload[] = [
     {
       id: 0,
-      title: 'Batida',
+      title: 'Ananindeua',
       location: 'Sorocaba',
       photoUrl: 'src/assets/images/vini.jpg',
       description: 'aaaaaaaaaa',
