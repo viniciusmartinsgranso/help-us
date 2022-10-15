@@ -6,6 +6,7 @@ import { OccurrenceTypeEnum, occurrenceTypeTranslate } from '../../../models/enu
 import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
 import { NewOccurrencePayload } from '../../../models/payloads/new-occurrence.payload';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
+import { OccurrenceService } from '../../../services/occurrence.service';
 
 @Component({
   selector: 'app-new-occurrence',
@@ -17,6 +18,7 @@ export class NewOccurrencePage implements OnInit {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly modalController: ModalController,
+    private readonly occurrenceService: OccurrenceService,
   ) {
     this.type = this.activatedRoute.snapshot.params.type;
     console.log(this.type);
@@ -57,9 +59,9 @@ export class NewOccurrencePage implements OnInit {
     console.log(this.occurrenceList);
     console.log(this.occurrence);
 
-    this.occurrenceList.push(this.occurrence);
+    this.occurrenceService.createOccurrence(this.occurrence);
 
-    console.log(this.occurrenceList);
+    // this.occurrenceList.push(this.occurrence);
 
     const modal = await this.modalController.create({
       mode: 'md',

@@ -4,4 +4,5 @@ export interface NewOccurrencePayload {
   description: string;
   location: string;
   iconUrl?: string;
+  userId?: number;
 }

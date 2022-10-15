@@ -1,5 +1,4 @@
 import { OccurrenceTypeEnum } from '../enums/occurrence-type.enum';
-import { UserProxy } from './user.proxy';
 
 export interface OccurrenceProxy {
   id: number;

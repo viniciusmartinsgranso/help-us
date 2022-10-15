@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
+import { mockedUsers } from '../../../models/mocks/user.mock';
+import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
+import { UserProxy } from '../../../models/proxies/user.proxy';
 
 @Component({
   selector: 'app-profile',
@@ -7,15 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() { }
+  constructor() {
+    // this.occurrences = [];
+    // const occurrence = this.occurrences.find(user => user.user === this.user.name);
+    // console.log(occurrence);
+    // this.occurrences.push(occurrence);
+  }
 
-  public user = {
-    imageUrl: '',
-    name: '',
-    role: '',
-  };
+  public users: UserProxy[] = mockedUsers;
+
+  public user: UserProxy;
 
   public isLoading: boolean = false;
+
+  public occurrences: OccurrenceProxy[] = mockedOccurrences;
+
+  public occurrence: OccurrenceProxy;
 
   ngOnInit() {
   }
