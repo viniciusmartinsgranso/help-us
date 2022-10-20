@@ -4,12 +4,15 @@
 
   <div class="login--form">
     <div class="login--form--login">
-      <img src="assets/images/user-login-icon.svg">
+      <img class="login--form--login--img" src="assets/images/user-login-icon.svg">
       <input (keydown.enter)="password.focus()" class="login--form--login--input" type="text" placeholder="Email" [(ngModel)]="loginPayload.email">
     </div>
     <div class="login--form--login">
-      <img src="assets/images/user-password.svg">
-      <input #password (keydown.enter)="login()" class="login--form--login--input" type="password" placeholder="Senha" [(ngModel)]="loginPayload.password">
+      <img class="login--form--login--img" src="assets/images/user-password.svg">
+      <input #password (keydown.enter)="login()" class="login--form--login--input" [type]="showPasswordLogin ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="loginPayload.password">
+      <button class="login--form--login--eye" (click)="showPasswordLogin = !showPasswordLogin">
+        <img [src]="showPasswordLogin ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
+      </button>
     </div>
     <span class="login--forgot" (click)="router.navigate(['/register'])">Registrar-se</span>
 

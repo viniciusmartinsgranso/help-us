@@ -23,7 +23,9 @@ export class FeedPage implements OnInit {
   }
 
   public getOccurrences(): void {
-    this.occurrenceList.push(this.occurrenceService.get());
+    const list = this.occurrenceService.get();
+    console.log(list);
+    this.occurrenceList.push();
   }
 
 }

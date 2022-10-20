@@ -15,18 +15,19 @@ export class OccurrenceService {
       id: 0,
       title: 'Ananindeua',
       location: 'Sorocaba',
-      photoUrl: 'src/assets/images/vini.jpg',
       description: 'aaaaaaaaaa',
       type: OccurrenceTypeEnum.COOP,
+      photoUrl: 'assets/images/vini.jpg'
     },
   ];
 
-  public get(): any {
+  public occurrenceList: OccurrenceProxy[] = [];
+
+  public get(): OccurrenceProxy {
     const list = JSON.parse(localStorage.getItem('occurrences'));
-    console.log(list);
 
     if (!list) {
-      return localStorage.setItem('occurrences', JSON.stringify(this.occurrence));
+      localStorage.setItem('occurrences', JSON.stringify(this.occurrenceList));
     }
     return list;
   }

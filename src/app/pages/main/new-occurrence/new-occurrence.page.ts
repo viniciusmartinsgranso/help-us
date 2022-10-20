@@ -19,14 +19,9 @@ export class NewOccurrencePage implements OnInit {
     private readonly occurrenceService: OccurrenceService,
   ) {
     this.type = this.activatedRoute.snapshot.params.type;
-    console.log(this.type);
 
     const lastItem = JSON.parse(localStorage.getItem('occurrences'));
-    if (lastItem[lastItem.length -1].id < 0) {
-      this.occurrence.id = 1;
-    } else {
-      this.occurrence.id = lastItem[lastItem.length -1].id + 1;
-    }
+    this.occurrence.id = lastItem[lastItem.length -1].id + 1;
   }
 
   public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;

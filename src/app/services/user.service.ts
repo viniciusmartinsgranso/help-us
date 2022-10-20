@@ -27,6 +27,7 @@ export class UserService {
 
   public create(user: CreateUserPayload): void {
     const storage = JSON.parse(localStorage.getItem('users'));
+    console.log(user);
     storage.push(user);
     localStorage.setItem('users', JSON.stringify(storage));
   }

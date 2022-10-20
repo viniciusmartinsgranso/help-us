@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginPayload } from '../../models/payloads/login.payload';
 import { HelperService } from '../../services/helper';
+import { UserService } from '../../services/user.service';
 import { CustomValidators } from '../../utils/validators';
 import isValidEmail = CustomValidators.isValidEmail;
 import isValidPassword = CustomValidators.isValidPassword;
@@ -13,23 +14,27 @@ import isValidPassword = CustomValidators.isValidPassword;
 })
 export class LoginPage implements OnInit {
 
+  constructor(
+    public readonly router: Router,
+    private readonly helperService: HelperService,
+    private readonly userService: UserService,
+  ) { }
+
+
   public loginPayload: LoginPayload = {
     email: '',
     password: '',
   };
 
-  public isLoading: boolean = false;
+  public isLoading = false;
 
-  constructor(
-    public readonly router: Router,
-    private readonly helperService: HelperService,
-  ) { }
+  public showPasswordLogin: boolean = false;
 
   ngOnInit() {
   }
 
   public async login(): Promise<void> {
-    if (!this.canLogin()) return;
+    if (!this.canLogin()) {return;}
 
     this.isLoading = true;
 
@@ -57,7 +62,7 @@ export class LoginPage implements OnInit {
 
   public canLogin(): boolean {
     if (isValidEmail(this.loginPayload.email) && isValidPassword(this.loginPayload.password))
-      return true;
+      {return true;}
 
     return false;
   }

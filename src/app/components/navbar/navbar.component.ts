@@ -18,7 +18,6 @@ export class NavbarComponent   {
     router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((route: NavigationEnd) => {
-        console.log(route);
 
         if (route.url.includes('/home'))
           this.currentNavbar = NavbarEnum.HOME;

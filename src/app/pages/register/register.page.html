@@ -6,28 +6,34 @@
 
   <div class="register--form">
     <div class="register--form--register">
-      <img src="assets/images/user-login-icon.svg">
+      <img class="register--form--register--img" src="assets/images/user-login-icon.svg">
       <input class="register--form--register--input" type="text" placeholder="Nome" [(ngModel)]="registerPayload.name">
     </div>
 
     <div class="register--form--register">
-      <img src="assets/images/user-login-icon.svg">
+      <img class="register--form--register--img" src="assets/images/user-login-icon.svg">
       <input class="register--form--register--input" type="text" placeholder="Email" [(ngModel)]="registerPayload.email">
     </div>
 
     <div class="register--form--register">
-      <img src="assets/images/user-login-icon.svg">
+      <img class="register--form--register--img" src="assets/images/user-login-icon.svg">
       <input class="register--form--register--input" type="text" placeholder="Cidade" [(ngModel)]="registerPayload.city">
     </div>
 
     <div class="register--form--register">
-      <img src="assets/images/user-password.svg">
-      <input class="register--form--register--input" type="password" placeholder="Senha" [(ngModel)]="registerPayload.password">
+      <img class="register--form--register--img" src="assets/images/user-password.svg">
+      <input class="register--form--register--input" [type]="showPasswordLogin ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="registerPayload.password">
+      <button class="register--form--register--eye" (click)="showPasswordLogin = !showPasswordLogin">
+        <img [src]="showPasswordLogin ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
+      </button>
     </div>
 
     <div class="register--form--register">
-      <img src="assets/images/user-password.svg">
-      <input class="register--form--register--input" type="password" placeholder="Confirme sua senha" [(ngModel)]="registerPayload.confirmPassword">
+      <img class="register--form--register--img" src="assets/images/user-password.svg">
+      <input class="register--form--register--input" [type]="showPasswordLogin ? 'text' : 'password'" placeholder="Confirme sua senha" [(ngModel)]="registerPayload.confirmPassword">
+      <button class="register--form--register--eye" (click)="showPasswordLogin = !showPasswordLogin">
+        <img [src]="showPasswordLogin ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
+      </button>
     </div>
 
     <img style="width: 100%" src="assets/images/line.svg">
