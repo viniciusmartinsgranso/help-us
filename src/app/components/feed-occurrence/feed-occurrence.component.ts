@@ -9,7 +9,9 @@ import { OccurrenceProxy } from '../../models/proxies/occurrence.proxy';
 })
 export class FeedOccurrenceComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    this.getLocalUser();
+  }
 
   @Input()
   public occurrence: OccurrenceProxy;
@@ -17,5 +19,9 @@ export class FeedOccurrenceComponent implements OnInit {
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeWhiteImage;
 
   ngOnInit() {}
+
+  public getLocalUser(): void {
+    this.occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
+  }
 
 }

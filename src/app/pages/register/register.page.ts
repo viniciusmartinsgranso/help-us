@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { mockedUsers } from '../../models/mocks/user.mock';
-import { CreateUserPayload, RegisterPayload } from '../../models/payloads/register.payload';
+import { RegisterPayload } from '../../models/payloads/register.payload';
 import { UserProxy } from '../../models/proxies/user.proxy';
 import { HelperService } from '../../services/helper';
 import { UserService } from '../../services/user.service';
@@ -20,7 +20,15 @@ export class RegisterPage implements OnInit {
     public readonly router: Router,
     private readonly helper: HelperService,
     private readonly userService: UserService,
-  ) { }
+  ) {
+    const lastItem = JSON.parse(localStorage.getItem('occurrences'));
+    if (lastItem.length === 0) {
+      this.registerPayload.id = 0;
+    }
+    else {
+      this.registerPayload.id = lastItem[lastItem.length - 1].id + 1;
+    }
+  }
 
   ngOnInit() {
   }
@@ -47,8 +55,10 @@ export class RegisterPage implements OnInit {
     console.log(this.registerPayload);
     this.userService.create(this.registerPayload);
 
-    await this.router.navigate(['/home']);
-    await this.helper.showToast('Bem vindo(a) ao Help-Us!');
+    this.getUsers();
+    console.log(this.userList);
+    // await this.router.navigate(['/home']);
+    // await this.helper.showToast('Bem vindo(a) ao Help-Us!');
 
     this.isLoading = false;
   }
@@ -58,5 +68,12 @@ export class RegisterPage implements OnInit {
       return true;
 
     return false;
+  }
+
+  public getUsers(): void {
+    const list = JSON.parse(localStorage.getItem('users'));
+    console.log(list);
+
+    this.userList = JSON.parse(localStorage.getItem('users'));
   }
 }

@@ -34,8 +34,6 @@ export class OccurrenceService {
 
   public create(occurrence: NewOccurrencePayload): void {
     const storage = JSON.parse(localStorage.getItem('occurrences'));
-    console.log(occurrence);
-    console.log(storage);
     storage.push(occurrence);
     localStorage.setItem('occurrences', JSON.stringify(storage));
   }

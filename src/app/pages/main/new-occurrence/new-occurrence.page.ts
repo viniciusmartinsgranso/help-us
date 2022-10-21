@@ -5,6 +5,7 @@ import { FinishOccurrenceComponent } from '../../../components/modals/finish-occ
 import { OccurrenceTypeEnum, occurrenceTypeTranslate } from '../../../models/enums/occurrence-type.enum';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { OccurrenceService } from '../../../services/occurrence.service';
+import any = jasmine.any;
 
 @Component({
   selector: 'app-new-occurrence',
@@ -21,10 +22,19 @@ export class NewOccurrencePage implements OnInit {
     this.type = this.activatedRoute.snapshot.params.type;
 
     const lastItem = JSON.parse(localStorage.getItem('occurrences'));
-    this.occurrence.id = lastItem[lastItem.length -1].id + 1;
+    if (lastItem.length === 0) {
+      this.occurrence.id = 0;
+    }
+    else {
+      this.occurrence.id = lastItem[lastItem.length - 1].id + 1;
+    }
+
+    this.occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
   }
 
   public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;
+
+  public loggedUser: any;
 
   // public occurrence: OccurrenceProxy = {
   //   id: 4,
@@ -35,7 +45,14 @@ export class NewOccurrencePage implements OnInit {
   //   type: this.type,
   // };
 
-  public occurrence: OccurrenceProxy;
+  public occurrence: OccurrenceProxy = {
+    id: 0,
+    title: '',
+    location: '',
+    description: '',
+    type: OccurrenceTypeEnum.COOP,
+    user: undefined,
+  };
 
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
 
