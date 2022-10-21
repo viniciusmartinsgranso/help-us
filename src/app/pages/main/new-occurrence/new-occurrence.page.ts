@@ -5,7 +5,6 @@ import { FinishOccurrenceComponent } from '../../../components/modals/finish-occ
 import { OccurrenceTypeEnum, occurrenceTypeTranslate } from '../../../models/enums/occurrence-type.enum';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { OccurrenceService } from '../../../services/occurrence.service';
-import any = jasmine.any;
 
 @Component({
   selector: 'app-new-occurrence',
