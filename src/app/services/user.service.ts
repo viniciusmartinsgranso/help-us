@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
+import { LoginPayload } from '../models/payloads/login.payload';
 import { CreateUserPayload } from '../models/payloads/register.payload';
 import { UserProxy } from '../models/proxies/user.proxy';
-import { HelperService } from './helper';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
 
-  constructor(
-    private readonly helper: HelperService,
-  ) { }
+  constructor() { }
 
   public user: CreateUserPayload[] = [
     {
@@ -57,20 +55,22 @@ export class UserService {
     localStorage.setItem('users', JSON.stringify(newList));
   }
 
-  public async login(user: UserProxy): Promise<void> {
-    const storage = JSON.parse(localStorage.getItem('users'));
-    console.log(storage);
+  public login(user: LoginPayload): boolean {
     localStorage.removeItem('loggedUser');
+    const storage = JSON.parse(localStorage.getItem('users'));
 
     const loggedUser = storage.map(currentUser => {
-      if (currentUser.email === user.email) {
+      if (currentUser.email === user.email && currentUser.password === user.password) {
+        console.log(currentUser);
         return currentUser;
-      } else {
-        this.helper.showToast('Usuário ou senha incorreta!');
-        return false;
       }
     });
-    console.log(loggedUser);
-    localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+
+    if(loggedUser) {
+      localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+      return true;
+    } else {
+      return false;
+    }
   }
 }

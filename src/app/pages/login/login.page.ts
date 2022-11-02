@@ -41,33 +41,17 @@ export class LoginPage implements OnInit {
 
     this.isLoading = true;
 
-    await this.userService.login(this.loginPayload);
-
-    /**
-     * TODO
-     * Implementar rota de autenticação de login
-     */
-
-    // const [isSuccess, message] = await this.authService.login(this.loginPayload.email, this.loginPayload.password);
-    // this.isLoading = false;
-
-    // if (isSuccess) {
-    //   return void await this.router.navigate(['/home']);
-    // } else {
-    //   await this.helperService.showToast(message);
-    //   return void await this.router.navigate(['/login']);
-    // }
-
-    // await this.helperService.showToast(message, 5_000);
-
-    await this.router.navigate(['/home']);
-
-    this.isLoading = false;
+    if (this.userService.login(this.loginPayload)) {
+      this.isLoading = false;
+      await this.router.navigate(['/home']);
+    } else {
+      return void await this.helperService.showToast('Usuário ou senha incorreta!');
+    }
   }
 
   public canLogin(): boolean {
     if (isValidEmail(this.loginPayload.email) && isValidPassword(this.loginPayload.password))
-      {return true;}
+      return true;
 
     return false;
   }
