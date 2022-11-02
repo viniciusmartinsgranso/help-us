@@ -26,12 +26,11 @@ export class UserService {
   }
 
   public create(user: CreateUserPayload): void {
-    const storageUsers = JSON.parse(localStorage.getItem('users'));
-    const localUser = JSON.parse(localStorage.getItem('loggedUser'));
-    localUser.push(user);
+    const storageUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+
     storageUsers.push(user);
     localStorage.setItem('users', JSON.stringify(storageUsers));
-    localStorage.setItem('loggedUser', JSON.stringify(localUser));
+    localStorage.setItem('loggedUser', JSON.stringify(user));
   }
 
   public update(user: UserProxy): void {

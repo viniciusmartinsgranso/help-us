@@ -34,6 +34,7 @@ export class OccurrenceService {
 
   public create(occurrence: NewOccurrencePayload): void {
     const storage = JSON.parse(localStorage.getItem('occurrences'));
+    occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
     storage.push(occurrence);
     localStorage.setItem('occurrences', JSON.stringify(storage));
   }

@@ -52,13 +52,10 @@ export class RegisterPage implements OnInit {
     if(!this.canRegister()) return;
     this.isLoading = true;
 
-    console.log(this.registerPayload);
     this.userService.create(this.registerPayload);
 
-    this.getUsers();
-    console.log(this.userList);
-    // await this.router.navigate(['/home']);
-    // await this.helper.showToast('Bem vindo(a) ao Help-Us!');
+    await this.router.navigate(['/home']);
+    await this.helper.showToast('Bem vindo(a) ao Help-Us!');
 
     this.isLoading = false;
   }
