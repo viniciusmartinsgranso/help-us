@@ -22,8 +22,11 @@ export class LoginPage implements OnInit {
 
 
   public loginPayload: LoginPayload = {
+    id: 0,
     email: '',
     password: '',
+    city: '',
+    name: '',
   };
 
   public isLoading = false;
@@ -37,6 +40,8 @@ export class LoginPage implements OnInit {
     if (!this.canLogin()) {return;}
 
     this.isLoading = true;
+
+    await this.userService.login(this.loginPayload);
 
     /**
      * TODO

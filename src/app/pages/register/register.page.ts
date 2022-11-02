@@ -21,8 +21,9 @@ export class RegisterPage implements OnInit {
     private readonly helper: HelperService,
     private readonly userService: UserService,
   ) {
-    const lastItem = JSON.parse(localStorage.getItem('occurrences'));
-    if (lastItem.length === 0) {
+    const lastItem = JSON.parse(localStorage.getItem('users'));
+    console.log(lastItem);
+    if (!lastItem) {
       this.registerPayload.id = 0;
     }
     else {
@@ -46,7 +47,8 @@ export class RegisterPage implements OnInit {
 
   public isLoading: boolean = false;
 
-  public showPasswordLogin: boolean = false;
+  public showPasswordRegister: boolean = false;
+  public showConfirmPasswordRegister: boolean = false;
 
   public async register(): Promise<void> {
     if(!this.canRegister()) return;
@@ -61,7 +63,7 @@ export class RegisterPage implements OnInit {
   }
 
   public canRegister(): boolean {
-    if (isValidEmail(this.registerPayload.email) && isValidPassword(this.registerPayload.password) && isValidPassword(this.registerPayload.confirmPassword) && this.registerPayload.name.length > 6 && this.registerPayload.city.length > 3 && this.registerPayload.password === this.registerPayload.confirmPassword)
+    if (isValidEmail(this.registerPayload.email) && isValidPassword(this.registerPayload.password) && isValidPassword(this.registerPayload.confirmPassword) && this.registerPayload.name.length > 3 && this.registerPayload.city.length > 3 && this.registerPayload.password === this.registerPayload.confirmPassword)
       return true;
 
     return false;
