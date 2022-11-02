@@ -64,7 +64,7 @@ export class UserService {
 
     const loggedUser = storage.map(currentUser => {
       if (currentUser.email === user.email) {
-        return true;
+        return currentUser;
       } else {
         this.helper.showToast('Usuário ou senha incorreta!');
         return false;
