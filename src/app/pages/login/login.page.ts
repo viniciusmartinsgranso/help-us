@@ -45,6 +45,7 @@ export class LoginPage implements OnInit {
       this.isLoading = false;
       await this.router.navigate(['/home']);
     } else {
+      this.isLoading = false;
       return void await this.helperService.showToast('Usuário ou senha incorreta!');
     }
   }

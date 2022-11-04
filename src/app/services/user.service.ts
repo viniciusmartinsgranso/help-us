@@ -59,6 +59,7 @@ export class UserService {
     localStorage.removeItem('loggedUser');
     const storage = JSON.parse(localStorage.getItem('users'));
 
+    console.log(storage);
     const loggedUser = storage.map(currentUser => {
       if (currentUser.email === user.email && currentUser.password === user.password) {
         console.log(currentUser);
@@ -66,11 +67,12 @@ export class UserService {
       }
     });
 
-    if(loggedUser) {
+    console.log(loggedUser);
+    if(loggedUser[1] === undefined) {
+      return false;
+    } else {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       return true;
-    } else {
-      return false;
     }
   }
 }
