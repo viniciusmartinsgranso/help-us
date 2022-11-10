@@ -41,7 +41,8 @@ export class LoginPage implements OnInit {
 
     this.isLoading = true;
 
-    if (this.userService.login(this.loginPayload)) {
+    const user = this.userService.login(this.loginPayload);
+    if (user) {
       this.isLoading = false;
       await this.router.navigate(['/home']);
     } else {

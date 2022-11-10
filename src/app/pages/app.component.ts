@@ -13,6 +13,7 @@ export class AppComponent implements OnDestroy {
   constructor(
     private readonly router: Router,
   ) {
+    this.verifyUser().then();
     this.routeSubscription = router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((route: NavigationEnd) => {
@@ -34,5 +35,13 @@ export class AppComponent implements OnDestroy {
 
   public async ngOnDestroy(): Promise<void> {
     this.routeSubscription.unsubscribe();
+  }
+
+  public async verifyUser(): Promise<void> {
+    const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
+
+    if (!loggedUser) {
+      return void await this.router.navigateByUrl('/login');
+    }
   }
 }

@@ -33,10 +33,12 @@ export class OccurrenceService {
   }
 
   public create(occurrence: NewOccurrencePayload): void {
-    const storage = JSON.parse(localStorage.getItem('occurrences'));
-    occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
-    storage.push(occurrence);
-    localStorage.setItem('occurrences', JSON.stringify(storage));
+    const storageOccurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
+
+    occurrence.user[0] = JSON.parse(localStorage.getItem('loggedUser'));
+    console.log(occurrence.user);
+    storageOccurrences.push(occurrence);
+    localStorage.setItem('occurrences', JSON.stringify(storageOccurrences));
   }
 
   public update(occurrence: OccurrenceProxy): void {

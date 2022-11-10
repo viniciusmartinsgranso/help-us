@@ -10,7 +10,6 @@ import { OccurrenceProxy } from '../../models/proxies/occurrence.proxy';
 export class FeedOccurrenceComponent implements OnInit {
 
   constructor() {
-    this.getLocalUser();
   }
 
   @Input()

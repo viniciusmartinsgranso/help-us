@@ -21,12 +21,7 @@ export class NewOccurrencePage implements OnInit {
     this.type = this.activatedRoute.snapshot.params.type;
 
     const lastItem = JSON.parse(localStorage.getItem('occurrences'));
-    if (lastItem.length === 0) {
-      this.occurrence.id = 0;
-    }
-    else {
-      this.occurrence.id = lastItem[lastItem.length - 1].id + 1;
-    }
+    this.occurrence.id = lastItem[lastItem.length - 1].id + 1;
 
     this.occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
   }
