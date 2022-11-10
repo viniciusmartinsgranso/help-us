@@ -27,8 +27,10 @@ export class UserService {
   }
 
   public create(user: CreateUserPayload): void {
+    localStorage.removeItem('loggedUser');
     const storageUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
+    console.log(user);
     storageUsers.push(user);
     localStorage.setItem('users', JSON.stringify(storageUsers));
     localStorage.setItem('loggedUser', JSON.stringify(user));
@@ -73,5 +75,14 @@ export class UserService {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
       return true;
     }
+  }
+
+  public invitedLogin(user: CreateUserPayload): void {
+    localStorage.removeItem('loggedUser');
+    const storageUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+
+    storageUsers.push(user);
+    localStorage.setItem('users', JSON.stringify(storageUsers));
+    localStorage.setItem('loggedUser', JSON.stringify(user));
   }
 }

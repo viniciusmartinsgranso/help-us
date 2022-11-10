@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginPayload } from '../../models/payloads/login.payload';
+import { CreateUserPayload, RegisterPayload } from '../../models/payloads/register.payload';
 import { HelperService } from '../../services/helper';
 import { UserService } from '../../services/user.service';
 import { CustomValidators } from '../../utils/validators';
@@ -27,6 +28,15 @@ export class LoginPage implements OnInit {
     password: '',
     city: '',
     name: '',
+  };
+
+  public invitedUser: RegisterPayload = {
+    id: 0,
+    name: 'Usuário',
+    email: '',
+    city: '',
+    password: '',
+    confirmPassword: ''
   };
 
   public isLoading = false;
@@ -59,6 +69,15 @@ export class LoginPage implements OnInit {
   }
 
   public async invitedLogin(): Promise<void> {
+    const lastItem = JSON.parse(localStorage.getItem('users'));
+    if (!lastItem) {
+      this.invitedUser.id = 0;
+    }
+    else {
+      this.invitedUser.id = lastItem[lastItem.length - 1].id + 1;
+    }
+
+    this.userService.invitedLogin(this.invitedUser);
     await this.helperService.showToast('Você entrou no modo convidado e não poderá publicar seu alerta no feed.', 1000);
     await this.router.navigate(['/home']);
   }
