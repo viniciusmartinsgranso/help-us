@@ -29,7 +29,7 @@ export class AppComponent implements OnDestroy {
 
   public canShowNavbar: boolean = false;
 
-  public routesWithoutNavbar: string[] = ['/login', '/new-feed-occurrence/0', '/new-feed-occurrence/1', '/new-feed-occurrence/2', '/register'];
+  public routesWithoutNavbar: string[] = ['/login', '/new-feed-occurrence/0', '/new-feed-occurrence/1', '/new-feed-occurrence/2', '/register', '/logout'];
 
   public routeSubscription: Subscription;
 

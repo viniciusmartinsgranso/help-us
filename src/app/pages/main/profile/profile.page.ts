@@ -28,6 +28,13 @@ export class ProfilePage implements OnInit {
   public occurrence: OccurrenceProxy;
 
   ngOnInit() {
+    this.getCurrentUser();
+  }
+
+
+  public getCurrentUser(): void {
+    const user = localStorage.getItem('loggedUser');
+    console.log(user);
   }
 
 }

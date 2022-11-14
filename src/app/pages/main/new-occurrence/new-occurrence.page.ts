@@ -18,15 +18,13 @@ export class NewOccurrencePage implements OnInit {
     private readonly modalController: ModalController,
     private readonly occurrenceService: OccurrenceService,
   ) {
-    this.type = this.activatedRoute.snapshot.params.type;
-
     const lastItem = JSON.parse(localStorage.getItem('occurrences'));
     this.occurrence.id = lastItem[lastItem.length - 1].id + 1;
 
     this.occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
   }
 
-  public type: OccurrenceTypeEnum = OccurrenceTypeEnum.CRASH;
+  public type: OccurrenceTypeEnum = this.activatedRoute.snapshot.params.type;
 
   public loggedUser: any;
 
@@ -44,7 +42,7 @@ export class NewOccurrencePage implements OnInit {
     title: '',
     location: '',
     description: '',
-    type: OccurrenceTypeEnum.COOP,
+    type: this.type,
     user: undefined,
   };
 
@@ -69,6 +67,7 @@ export class NewOccurrencePage implements OnInit {
   }
 
   public async postNewOccurrence(): Promise<void> {
+    console.log(this.occurrence);
     this.occurrenceService.create(this.occurrence);
 
     // this.occurrenceList.push(this.occurrence);

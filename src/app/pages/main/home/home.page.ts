@@ -24,7 +24,6 @@ export class HomePage implements OnInit {
   public mockedOccurrences: OccurrenceProxy[] = mockedOccurrences;
 
   public async redirectToType(type: string): Promise<void> {
-    console.log(type);
     await this.router.navigate(['new-feed-occurrence/', type]);
   }
 
@@ -33,8 +32,14 @@ export class HomePage implements OnInit {
   }
 
   public getMockedOccurrences(): void {
-    this.occurrenceService.create(this.mockedOccurrences[0]);
+    const storageOccurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
+    if (storageOccurrences.lenght === 0) {
+      return void this.occurrenceService.create(this.mockedOccurrences[0]);
+    }
 
+    if (!storageOccurrences.lenght) {
+      return void this.occurrenceService.create(this.mockedOccurrences[0]);
+    }
   }
 
 }

@@ -22,7 +22,6 @@ export class RegisterPage implements OnInit {
     private readonly userService: UserService,
   ) {
     const lastItem = JSON.parse(localStorage.getItem('users'));
-    console.log(lastItem);
     if (!lastItem) {
       this.registerPayload.id = 0;
     }
@@ -71,7 +70,6 @@ export class RegisterPage implements OnInit {
 
   public getUsers(): void {
     const list = JSON.parse(localStorage.getItem('users'));
-    console.log(list);
 
     this.userList = JSON.parse(localStorage.getItem('users'));
   }

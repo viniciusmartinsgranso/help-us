@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
+    path: 'logout',
+    loadChildren: () => import('./main/logout/logout.module').then( m => m.LogoutPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
