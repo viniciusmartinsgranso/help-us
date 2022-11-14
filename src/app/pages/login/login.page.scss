@@ -85,6 +85,14 @@
 
   &--developed {
     color: #707070;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    a, img {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }
 
