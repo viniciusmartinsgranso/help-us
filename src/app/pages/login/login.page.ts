@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginPayload } from '../../models/payloads/login.payload';
-import { CreateUserPayload, RegisterPayload } from '../../models/payloads/register.payload';
+import { RegisterPayload } from '../../models/payloads/register.payload';
 import { HelperService } from '../../services/helper';
 import { UserService } from '../../services/user.service';
 import { CustomValidators } from '../../utils/validators';
@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
     }
 
     this.userService.invitedLogin(this.invitedUser);
-    await this.helperService.showToast('Você entrou no modo convidado e não poderá publicar seu alerta no feed.', 1000);
+    await this.helperService.showToast('Você entrou no modo convidado e suas informações de usuário serão padrões.', 1000);
     await this.router.navigate(['/home']);
   }
 

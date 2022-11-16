@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { mockedUsers } from '../../../models/mocks/user.mock';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { UserProxy } from '../../../models/proxies/user.proxy';
@@ -10,12 +11,9 @@ import { UserProxy } from '../../../models/proxies/user.proxy';
 })
 export class ProfilePage implements OnInit {
 
-  constructor() {
-    // this.occurrences = [];
-    // const occurrence = this.occurrences.find(user => user.user === this.user.name);
-    // console.log(occurrence);
-    // this.occurrences.push(occurrence);
-  }
+  constructor(
+    public readonly router: Router,
+  ) {}
 
   public users: UserProxy[] = mockedUsers;
 
@@ -29,12 +27,20 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     this.getCurrentUser();
+    this.getUserOccurrences();
   }
 
 
   public getCurrentUser(): void {
-    const user = localStorage.getItem('loggedUser');
-    console.log(user);
+    this.user = JSON.parse(localStorage.getItem('loggedUser'));
+    console.log(this.user);
   }
 
+  public getUserOccurrences(): void {
+    const occurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
+    console.log(occurrences);
+
+    this.occurrences = occurrences.filter(oc => oc.user.id === this.user.id);
+    console.log(this.occurrences);
+  }
 }

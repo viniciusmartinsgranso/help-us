@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular';
 import { OccurrenceTypeEnum } from '../../../models/enums/occurrence-type.enum';
 import { mockedOccurrences } from '../../../models/mocks/occurrence.mock';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
+import { UserProxy } from '../../../models/proxies/user.proxy';
 import { OccurrenceService } from '../../../services/occurrence.service';
 
 @Component({
@@ -23,12 +24,15 @@ export class HomePage implements OnInit {
 
   public mockedOccurrences: OccurrenceProxy[] = mockedOccurrences;
 
+  public user: UserProxy;
+
   public async redirectToType(type: string): Promise<void> {
     await this.router.navigate(['new-feed-occurrence/', type]);
   }
 
   public ngOnInit(): void {
     this.getMockedOccurrences();
+    this.getLoggedUser();
   }
 
   public getMockedOccurrences(): void {
@@ -40,6 +44,10 @@ export class HomePage implements OnInit {
     if (!storageOccurrences.lenght) {
       return void this.occurrenceService.create(this.mockedOccurrences[0]);
     }
+  }
+
+  public getLoggedUser(): void {
+    this.user = JSON.parse(localStorage.getItem('loggedUser'));
   }
 
 }

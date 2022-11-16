@@ -28,7 +28,7 @@
 
           img {
             border-radius: 100%;
-            width: 10rem;
+            width: 8rem;
             position: absolute;
             border: .3rem solid white;
             top: -6rem;
@@ -40,7 +40,9 @@
           justify-content: flex-end;
 
           img {
-            padding: 1rem;
+            padding: 0.4rem;
+            border: 0.1rem solid white;
+            border-radius: 100%;
           }
         }
 

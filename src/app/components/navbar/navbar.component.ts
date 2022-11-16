@@ -51,9 +51,9 @@ export class NavbarComponent   {
     },
     {
       type: NavbarEnum.PROFILE,
-      link: '/logout',
-      icon: 'assets/images/exit-app.svg',
-      iconActivated: 'assets/images/confirm-exit.svg',
+      link: '/profile',
+      icon: 'assets/images/navbar-profile.svg',
+      iconActivated: 'assets/images/navbar-profile-selected.svg',
     }
   ];
 

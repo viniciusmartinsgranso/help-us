@@ -4,17 +4,17 @@
       <div class="profile--modal--content--user">
 
         <div class="profile--modal--content--user--pic">
-          <img [src]="user?.photoUrl || 'assets/images/vini.jpg'">
+          <img [src]="user?.photoUrl || 'assets/images/user.jpg'">
         </div>
 
         <div class="profile--modal--content--user--menu">
-          <img src="assets/images/profile-menu-options.svg">
+          <img src="assets/images/confirm-exit.svg" (click)="router.navigate(['/logout'])">
         </div>
 
         <div class="profile--modal--content--user--labels">
-          <label class="profile--modal--content--user--labels--name">{{ user?.name || 'Vini' }}</label>
+          <label class="profile--modal--content--user--labels--name">{{ user.name }}</label>
           <br>
-          <label class="profile--modal--content--user--labels--job">{{ user?.city || 'Sorocaba' }}</label>
+          <label class="profile--modal--content--user--labels--job">{{ user.city }}</label>
         </div>
 
       </div>
@@ -24,9 +24,14 @@
           <h4 style="font-weight: bold;">MINHAS OCORRENCIAS</h4>
         </div>
 
-        <div class="profile--modal--content--posts--my-posts">
+        <div class="profile--modal--content--posts--my-posts" *ngIf="!occurrences; else empty">
           <app-feed-occurrence *ngFor="let posts of occurrences" [occurrence]="posts"></app-feed-occurrence>
         </div>
+        <ng-template #empty>
+          <div>
+            <h3 style="color: grey">Você ainda não possui ocorrência :(</h3>
+          </div>
+        </ng-template>
         <ng-template #loading>
           <app-half-circle-spinner></app-half-circle-spinner>
         </ng-template>

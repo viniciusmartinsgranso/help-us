@@ -80,6 +80,7 @@ export class UserService {
   public invitedLogin(user: CreateUserPayload): void {
     localStorage.removeItem('loggedUser');
     const storageUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
+    console.log(storageUsers);
 
     storageUsers.push(user);
     localStorage.setItem('users', JSON.stringify(storageUsers));
