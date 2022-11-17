@@ -24,7 +24,7 @@ export class NewOccurrencePage implements OnInit {
     this.occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
   }
 
-  public type: OccurrenceTypeEnum = this.activatedRoute.snapshot.params.type;
+  public type: OccurrenceTypeEnum = +this.activatedRoute.snapshot.params.type;
 
   public loggedUser: any;
 

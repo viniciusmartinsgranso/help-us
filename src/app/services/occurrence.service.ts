@@ -36,8 +36,8 @@ export class OccurrenceService {
     const storageOccurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
 
     occurrence.user[0] = JSON.parse(localStorage.getItem('loggedUser'));
-    console.log(occurrence.user);
     storageOccurrences.push(occurrence);
+    console.log(storageOccurrences);
     localStorage.setItem('occurrences', JSON.stringify(storageOccurrences));
   }
 

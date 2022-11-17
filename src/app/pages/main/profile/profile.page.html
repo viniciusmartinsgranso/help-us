@@ -24,7 +24,7 @@
           <h4 style="font-weight: bold;">MINHAS OCORRENCIAS</h4>
         </div>
 
-        <div class="profile--modal--content--posts--my-posts" *ngIf="!occurrences; else empty">
+        <div class="profile--modal--content--posts--my-posts">
           <app-feed-occurrence *ngFor="let posts of occurrences" [occurrence]="posts"></app-feed-occurrence>
         </div>
         <ng-template #empty>

@@ -24,6 +24,8 @@ export class HomePage implements OnInit {
 
   public mockedOccurrences: OccurrenceProxy[] = mockedOccurrences;
 
+  public occurrences: OccurrenceProxy[] = [];
+
   public user: UserProxy;
 
   public async redirectToType(type: string): Promise<void> {
@@ -31,17 +33,17 @@ export class HomePage implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.getMockedOccurrences();
     this.getLoggedUser();
   }
 
-  public getMockedOccurrences(): void {
-    const storageOccurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
-    if (storageOccurrences.lenght === 0) {
-      return void this.occurrenceService.create(this.mockedOccurrences[0]);
-    }
+  public ionViewDidEnter(): void {
+    this.getMockedOccurrences();
+  }
 
-    if (!storageOccurrences.lenght) {
+  public getMockedOccurrences(): void {
+    const storageOccurrences = JSON.parse(localStorage.getItem('occurrences'));
+
+    if (!storageOccurrences) {
       return void this.occurrenceService.create(this.mockedOccurrences[0]);
     }
   }

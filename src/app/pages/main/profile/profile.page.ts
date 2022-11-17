@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { mockedUsers } from '../../../models/mocks/user.mock';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { UserProxy } from '../../../models/proxies/user.proxy';
 
@@ -9,13 +8,13 @@ import { UserProxy } from '../../../models/proxies/user.proxy';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
 
   constructor(
     public readonly router: Router,
-  ) {}
-
-  public users: UserProxy[] = mockedUsers;
+  ) {
+    this.getCurrentUser();
+  }
 
   public user: UserProxy;
 
@@ -23,24 +22,21 @@ export class ProfilePage implements OnInit {
 
   public occurrences: OccurrenceProxy[] = [];
 
-  public occurrence: OccurrenceProxy;
-
-  ngOnInit() {
-    this.getCurrentUser();
-    this.getUserOccurrences();
+  public async ionViewDidEnter(): Promise<void> {
+    await this.getUserOccurrences();
   }
-
 
   public getCurrentUser(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
-    console.log(this.user);
   }
 
-  public getUserOccurrences(): void {
+  public async getUserOccurrences(): Promise<void> {
+    this.occurrences = [];
     const occurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
-    console.log(occurrences);
+    console.log(occurrences, 'occurrences');
 
-    this.occurrences = occurrences.filter(oc => oc.user.id === this.user.id);
-    console.log(this.occurrences);
+    const logs = occurrences.filter(oc => oc.user.id === this.user.id);
+    console.log(logs, 'logs');
+    this.occurrences.push(logs);
   }
 }

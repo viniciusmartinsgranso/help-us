@@ -18,11 +18,6 @@ export class FeedOccurrenceComponent implements OnInit {
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeWhiteImage;
 
   ngOnInit() {
-    console.log(this.occurrence.type);
+    console.log(this.occurrence);
   }
-
-  public getLocalUser(): void {
-    this.occurrence.user = JSON.parse(localStorage.getItem('loggedUser'));
-  }
-
 }
