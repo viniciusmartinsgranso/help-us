@@ -70,8 +70,6 @@ export class NewOccurrencePage implements OnInit {
     console.log(this.occurrence);
     this.occurrenceService.create(this.occurrence);
 
-    // this.occurrenceList.push(this.occurrence);
-
     const modal = await this.modalController.create({
       mode: 'md',
       component: FinishOccurrenceComponent,
