@@ -24,9 +24,13 @@
           <h4 style="font-weight: bold;">MINHAS OCORRENCIAS</h4>
         </div>
 
-        <div class="profile--modal--content--posts--my-posts">
-          <app-feed-occurrence *ngFor="let posts of occurrences" [occurrence]="posts"></app-feed-occurrence>
-        </div>
+        <ng-template *ngIf="occurrences" [ngTemplateOutlet]="posts"></ng-template>
+        <ng-template *ngIf="!occurrences" [ngTemplateOutlet]="empty"></ng-template>
+        <ng-template #posts>
+          <div class="profile--modal--content--posts--my-posts">
+            <app-feed-occurrence *ngFor="let posts of occurrences" [occurrence]="posts"></app-feed-occurrence>
+          </div>
+        </ng-template>
         <ng-template #empty>
           <div>
             <h3 style="color: grey">Você ainda não possui ocorrência :(</h3>

@@ -18,6 +18,5 @@ export class FeedOccurrenceComponent implements OnInit {
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeWhiteImage;
 
   ngOnInit() {
-    console.log(this.occurrence);
   }
 }
