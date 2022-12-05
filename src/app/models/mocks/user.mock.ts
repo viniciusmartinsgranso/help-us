@@ -7,40 +7,5 @@ export const mockedUsers: UserProxy[] = [
     email: '',
     id: 0,
     photoUrl: 'assets/images/vini.jpg'
-  },
-  {
-    city: '',
-    name: '',
-    email: '',
-    id: 1,
-    photoUrl: 'assets/images/vini.jpg'
-  },
-  {
-    city: '',
-    name: '',
-    email: '',
-    id: 1,
-    photoUrl: 'assets/images/vini.jpg'
-  },
-  {
-    city: '',
-    name: '',
-    email: '',
-    id: 1,
-    photoUrl: 'assets/images/vini.jpg'
-  },
-  {
-    city: '',
-    name: '',
-    email: '',
-    id: 1,
-    photoUrl: 'assets/images/vini.jpg'
-  },
-  {
-    city: '',
-    name: '',
-    email: '',
-    id: 1,
-    photoUrl: 'assets/images/vini.jpg'
   }
 ];

@@ -30,7 +30,7 @@
 
     <div class="register--form--register">
       <img class="register--form--register--img" src="assets/images/user-password.svg">
-      <input class="register--form--register--input" [type]="showConfirmPasswordRegister ? 'text' : 'password'" placeholder="Confirme sua senha" [(ngModel)]="registerPayload.confirmPassword">
+      <input class="register--form--register--input" (keydown.enter)="register()" [type]="showConfirmPasswordRegister ? 'text' : 'password'" placeholder="Confirme sua senha" [(ngModel)]="registerPayload.confirmPassword">
       <button class="register--form--register--eye" (click)="showConfirmPasswordRegister = !showConfirmPasswordRegister">
         <img [src]="showConfirmPasswordRegister ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
       </button>
