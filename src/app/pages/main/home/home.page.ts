@@ -44,7 +44,9 @@ export class HomePage implements OnInit {
     const storageOccurrences = JSON.parse(localStorage.getItem('occurrences'));
 
     if (!storageOccurrences) {
-      return void this.occurrenceService.create(this.mockedOccurrences[0]);
+      this.occurrenceService.create(this.mockedOccurrences[0]);
+      this.occurrenceService.create(this.mockedOccurrences[1]);
+      return void this.occurrenceService.create(this.mockedOccurrences[2]);
     }
   }
 
