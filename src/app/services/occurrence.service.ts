@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { OccurrenceTypeEnum } from '../models/enums/occurrence-type.enum';
-import { NewOccurrencePayload } from '../models/payloads/new-occurrence.payload';
 import { OccurrenceProxy } from '../models/proxies/occurrence.proxy';
 
 @Injectable({
@@ -10,34 +8,22 @@ export class OccurrenceService {
 
   constructor() { }
 
-  public occurrence: NewOccurrencePayload[] = [
-    {
-      id: 0,
-      title: 'Ananindeua',
-      location: 'Sorocaba',
-      description: 'aaaaaaaaaa',
-      type: OccurrenceTypeEnum.COOP,
-      photoUrl: 'assets/images/vini.jpg'
-    },
-  ];
-
-  public occurrenceList: OccurrenceProxy[] = [];
-
-  public get(): OccurrenceProxy {
-    const list = JSON.parse(localStorage.getItem('occurrences'));
-
-    if (!list) {
-      localStorage.setItem('occurrences', JSON.stringify(this.occurrenceList));
-    }
-    return list;
+  public get(): OccurrenceProxy[] {
+    const occurrences = localStorage.getItem('occurrences');
+    return occurrences ? JSON.parse(occurrences) : [];
   }
 
-  public create(occurrence: NewOccurrencePayload): void {
-    const storageOccurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
+  public create(occurrence: OccurrenceProxy): void {
+    const storageOccurrences: OccurrenceProxy[] = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
 
-    occurrence.user[0] = JSON.parse(localStorage.getItem('loggedUser'));
-    storageOccurrences.push(occurrence);
-    console.log(storageOccurrences);
+    const newOccurrence: OccurrenceProxy = {
+      ...occurrence,
+      id: storageOccurrences.length > 0 ? storageOccurrences[storageOccurrences.length - 1].id + 1 : 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    storageOccurrences.unshift(newOccurrence);
     localStorage.setItem('occurrences', JSON.stringify(storageOccurrences));
   }
 
@@ -50,7 +36,6 @@ export class OccurrenceService {
 
   public async delete(occurrence: number): Promise<void> {
     const storage = JSON.parse(localStorage.getItem('occurrences'));
-    console.log(storage);
 
     const newList = storage.filter(occurrenceStorage => {
       if (occurrenceStorage.id !== occurrence) {

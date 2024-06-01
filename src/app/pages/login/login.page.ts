@@ -62,10 +62,7 @@ export class LoginPage implements OnInit {
   }
 
   public canLogin(): boolean {
-    if (isValidEmail(this.loginPayload.email) && isValidPassword(this.loginPayload.password))
-      return true;
-
-    return false;
+    return isValidEmail(this.loginPayload.email) && isValidPassword(this.loginPayload.password);
   }
 
   public async invitedLogin(): Promise<void> {

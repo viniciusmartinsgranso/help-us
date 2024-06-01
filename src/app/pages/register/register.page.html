@@ -21,18 +21,18 @@
     </div>
 
     <div class="register--form--register">
-      <img class="register--form--register--img" src="assets/images/user-password.svg">
+      <img class="register--form--register--img" src="assets/images/u_lock.svg">
       <input class="register--form--register--input" [type]="showPasswordRegister ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="registerPayload.password">
       <button class="register--form--register--eye" (click)="showPasswordRegister = !showPasswordRegister">
-        <img [src]="showPasswordRegister ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
+        <img [src]="showPasswordRegister ? 'assets/images/eye_icon.svg' : 'assets/images/eye-off_icon.svg'">
       </button>
     </div>
 
     <div class="register--form--register">
-      <img class="register--form--register--img" src="assets/images/user-password.svg">
+      <img class="register--form--register--img" src="assets/images/u_lock.svg">
       <input class="register--form--register--input" (keydown.enter)="register()" [type]="showConfirmPasswordRegister ? 'text' : 'password'" placeholder="Confirme sua senha" [(ngModel)]="registerPayload.confirmPassword">
       <button class="register--form--register--eye" (click)="showConfirmPasswordRegister = !showConfirmPasswordRegister">
-        <img [src]="showConfirmPasswordRegister ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
+        <img [src]="showConfirmPasswordRegister ? 'assets/images/eye_icon.svg' : 'assets/images/eye-off_icon.svg'">
       </button>
     </div>
 

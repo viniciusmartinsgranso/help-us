@@ -4,23 +4,12 @@
   height: 100%;
   padding: 2rem 2rem 2rem 2rem;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   &--page {
     text-align: center;
-
-    &--devs {
-      display: flex;
-      overflow: auto;
-      gap: 2rem;
-
-      img {
-        width: 12rem;
-        height: 12rem;
-        border: .2rem dashed var(--yellow-color);
-        border-radius: 2rem;
-        margin-bottom: 1rem;
-      }
-    }
 
     &--buttons {
       display: flex;

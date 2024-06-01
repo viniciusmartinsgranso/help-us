@@ -11,6 +11,8 @@ export const mockedOccurrences: OccurrenceProxy[] = [
     id: 0,
     photoUrl: 'assets/images/poste-sem-luz.jpg',
     user: mockedUsers[0],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     title: 'Batida na Raposo',
@@ -20,6 +22,8 @@ export const mockedOccurrences: OccurrenceProxy[] = [
     id: 0,
     photoUrl: 'assets/images/acidente-raposo-tavares.jpg',
     user: mockedUsers[1],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   },
   {
     title: 'Incendio no Predio da Vila Fiori',
@@ -29,5 +33,7 @@ export const mockedOccurrences: OccurrenceProxy[] = [
     id: 0,
     photoUrl: 'assets/images/incendio-occurrence.jpg',
     user: mockedUsers[2],
+    createdAt: new Date(),
+    updatedAt: new Date(),
   }
 ];

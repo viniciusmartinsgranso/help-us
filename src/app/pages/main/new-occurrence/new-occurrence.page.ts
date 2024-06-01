@@ -44,6 +44,8 @@ export class NewOccurrencePage implements OnInit {
     description: '',
     type: this.type,
     user: undefined,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   };
 
   public typeTranslate: Record<OccurrenceTypeEnum, string> = occurrenceTypeTranslate;
@@ -59,7 +61,6 @@ export class NewOccurrencePage implements OnInit {
     reader.readAsDataURL(file);
     reader.onload = () => {
       this.occurrence.photoUrl = reader.result.toString();
-      console.log(this.occurrence.photoUrl);
     };
     reader.onerror = error => {
       console.log('Error: ', error);
@@ -67,7 +68,6 @@ export class NewOccurrencePage implements OnInit {
   }
 
   public async postNewOccurrence(): Promise<void> {
-    console.log(this.occurrence);
     this.occurrenceService.create(this.occurrence);
 
     const modal = await this.modalController.create({
@@ -86,10 +86,7 @@ export class NewOccurrencePage implements OnInit {
     if (this.occurrence.description.length < 5)
       return false;
 
-    if (this.occurrence.location.length < 5)
-      return false;
-
-    return true;
+    return this.occurrence.location.length >= 5;
   }
 
 }

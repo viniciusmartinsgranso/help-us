@@ -7,6 +7,8 @@ export interface OccurrenceProxy {
   title: string;
   description: string;
   location: string;
+  createdAt: Date;
+  updatedAt: Date;
   user?: UserProxy;
   photoUrl?: string;
 }

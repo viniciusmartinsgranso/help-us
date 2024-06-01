@@ -11,7 +11,7 @@
       <img class="login--form--login--img" src="assets/images/u_lock.svg">
       <input #password (keydown.enter)="login()" class="login--form--login--input" [type]="showPasswordLogin ? 'text' : 'password'" placeholder="Senha" [(ngModel)]="loginPayload.password">
       <button class="login--form--login--eye" (click)="showPasswordLogin = !showPasswordLogin">
-        <img [src]="showPasswordLogin ? 'assets/images/eye-off_icon.svg' : 'assets/images/eye_icon.svg'">
+        <img [src]="showPasswordLogin ? 'assets/images/eye_icon.svg' : 'assets/images/eye-off_icon.svg'">
       </button>
     </div>
     <span class="login--forgot" (click)="router.navigate(['/register'])">Registrar-se</span>

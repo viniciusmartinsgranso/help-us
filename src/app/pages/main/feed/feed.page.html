@@ -1,5 +1,5 @@
 <div class="feed">
-  <ng-template *ngIf="occurrenceList.length === 0" [ngTemplateOutlet]="empty"></ng-template>
+  <ng-template *ngIf="!occurrenceList.length" [ngTemplateOutlet]="empty"></ng-template>
   <ng-template *ngIf="occurrenceList.length >= 1" [ngTemplateOutlet]="list"></ng-template>
 
   <ng-template #list>

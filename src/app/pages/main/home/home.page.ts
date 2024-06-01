@@ -14,12 +14,6 @@ import { OccurrenceService } from '../../../services/occurrence.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(
-    private readonly modalController: ModalController,
-    private readonly router: Router,
-    private readonly occurrenceService: OccurrenceService
-  ) {}
-
   public occurrenceType: Record<OccurrenceTypeEnum, string>;
 
   public mockedOccurrences: OccurrenceProxy[] = mockedOccurrences;
@@ -27,6 +21,11 @@ export class HomePage implements OnInit {
   public occurrences: OccurrenceProxy[] = [];
 
   public user: UserProxy;
+
+  constructor(
+    private readonly router: Router,
+    private readonly occurrenceService: OccurrenceService
+  ) {}
 
   public async redirectToType(type: string): Promise<void> {
     await this.router.navigate(['new-feed-occurrence/', type]);
@@ -44,9 +43,7 @@ export class HomePage implements OnInit {
     const storageOccurrences = JSON.parse(localStorage.getItem('occurrences'));
 
     if (!storageOccurrences) {
-      this.occurrenceService.create(this.mockedOccurrences[0]);
-      this.occurrenceService.create(this.mockedOccurrences[1]);
-      return void this.occurrenceService.create(this.mockedOccurrences[2]);
+      this.mockedOccurrences.forEach(occurrence => this.occurrenceService.create(occurrence));
     }
   }
 

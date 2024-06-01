@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { LoginPayload } from '../models/payloads/login.payload';
-import { CreateUserPayload } from '../models/payloads/register.payload';
+import { CreateUserPayload, RegisterPayload } from '../models/payloads/register.payload';
 import { UserProxy } from '../models/proxies/user.proxy';
 
 @Injectable({
@@ -26,13 +26,27 @@ export class UserService {
     }
   }
 
-  public create(user: CreateUserPayload): void {
+  public create(user: Omit<RegisterPayload, 'password'>): boolean {
     localStorage.removeItem('loggedUser');
     const storageUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
 
-    storageUsers.push(user);
+    const userWithSameEmail = storageUsers.find(us => us.email === user.email);
+
+    if (userWithSameEmail) {
+      return false;
+    }
+
+    const newUser: UserProxy = {
+      ...user,
+      id: storageUsers.length > 0 ? storageUsers[storageUsers.length - 1].id + 1 : 1,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    storageUsers.push(newUser);
     localStorage.setItem('users', JSON.stringify(storageUsers));
-    localStorage.setItem('loggedUser', JSON.stringify(user));
+    localStorage.setItem('loggedUser', JSON.stringify(newUser));
+    return true;
   }
 
   public update(user: UserProxy): void {
@@ -44,7 +58,6 @@ export class UserService {
 
   public async delete(user: number): Promise<void> {
     const storage = JSON.parse(localStorage.getItem('users'));
-    console.log(storage);
 
     const newList = storage.filter(userStorage => {
       if (userStorage.id !== user) {
@@ -60,13 +73,13 @@ export class UserService {
     localStorage.removeItem('loggedUser');
     const storage = JSON.parse(localStorage.getItem('users'));
 
-    const loggedUser = storage.map(currentUser => {
-      if (currentUser.email === user.email && currentUser.password === user.password) {
-        return currentUser;
-      }
-    });
+    if (!storage) {
+      return false;
+    }
 
-    if(loggedUser[0] === undefined) {
+    const loggedUser = storage.find(currentUser => currentUser.email === user.email && currentUser.password === user.password);
+
+    if (!loggedUser) {
       return false;
     } else {
       localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
@@ -77,7 +90,6 @@ export class UserService {
   public invitedLogin(user: CreateUserPayload): void {
     localStorage.removeItem('loggedUser');
     const storageUsers = localStorage.getItem('users') ? JSON.parse(localStorage.getItem('users')) : [];
-    console.log(storageUsers);
 
     storageUsers.push(user);
     localStorage.setItem('users', JSON.stringify(storageUsers));

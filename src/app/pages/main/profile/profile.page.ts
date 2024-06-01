@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OccurrenceProxy } from '../../../models/proxies/occurrence.proxy';
 import { UserProxy } from '../../../models/proxies/user.proxy';
+import { OccurrenceService } from '../../../services/occurrence.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,6 +13,7 @@ export class ProfilePage {
 
   constructor(
     public readonly router: Router,
+    private readonly occurrenceService: OccurrenceService,
   ) {
     this.getCurrentUser();
 
@@ -33,10 +35,9 @@ export class ProfilePage {
 
   public getUserOccurrences(): void {
     this.occurrences = [];
-    const occurrences = localStorage.getItem('occurrences') ? JSON.parse(localStorage.getItem('occurrences')) : [];
+    const occurrences = this.occurrenceService.get();
 
     const logs = occurrences.filter(oc => oc.user.id === this.user.id);
     this.occurrences.push(...logs);
-    console.log(this.occurrences[0]);
   }
 }

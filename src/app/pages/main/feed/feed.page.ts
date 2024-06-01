@@ -13,18 +13,18 @@ export class FeedPage implements OnInit {
     private readonly occurrenceService: OccurrenceService,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.getOccurrences();
+  }
+
+  public ionViewDidEnter() {
     this.getOccurrences();
   }
 
   public occurrenceList: OccurrenceProxy[] = [];
 
-  public async ionViewDidEnter(): Promise<void> {
-  }
-
   public getOccurrences(): void {
-    this.occurrenceList = JSON.parse(localStorage.getItem('occurrences'));
-    console.log(this.occurrenceList);
+    this.occurrenceList = this.occurrenceService.get();
   }
 
 }

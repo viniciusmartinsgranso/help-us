@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,13 +6,19 @@ import { Router } from '@angular/router';
   templateUrl: './logout.page.html',
   styleUrls: ['./logout.page.scss'],
 })
-export class LogoutPage implements OnInit {
+export class LogoutPage {
 
   constructor(
-    public readonly router: Router,
+    private readonly router: Router,
   ) { }
 
-  ngOnInit() {
+  public async logoutUser(): Promise<void> {
+    localStorage.removeItem('loggedUser');
+    await this.router.navigateByUrl('/login');
+  }
+
+  public async onFeedRoute(): Promise<void> {
+    await this.router.navigateByUrl('/feed');
   }
 
 }
