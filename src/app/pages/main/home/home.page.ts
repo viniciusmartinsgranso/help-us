@@ -22,6 +22,8 @@ export class HomePage implements OnInit {
 
   public user: UserProxy;
 
+  public isInvitedUser: boolean = false;
+
   constructor(
     private readonly router: Router,
     private readonly occurrenceService: OccurrenceService
@@ -49,6 +51,10 @@ export class HomePage implements OnInit {
 
   public getLoggedUser(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
+
+    if (this.user.email === '') {
+      this.isInvitedUser = true;
+    }
   }
 
 }

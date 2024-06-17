@@ -11,6 +11,14 @@ import { OccurrenceService } from '../../../services/occurrence.service';
 })
 export class ProfilePage {
 
+  public user: UserProxy;
+
+  public isLoading: boolean = false;
+
+  public occurrences: OccurrenceProxy[] = [];
+
+  public isInvitedUser: boolean = false;
+
   constructor(
     public readonly router: Router,
     private readonly occurrenceService: OccurrenceService,
@@ -20,17 +28,15 @@ export class ProfilePage {
     this.getUserOccurrences();
   }
 
-  public user: UserProxy;
-
-  public isLoading: boolean = false;
-
-  public occurrences: OccurrenceProxy[] = [];
-
   public async ionViewDidEnter(): Promise<void> {
   }
 
   public getCurrentUser(): void {
     this.user = JSON.parse(localStorage.getItem('loggedUser'));
+
+    if (this.user.email === '') {
+      this.isInvitedUser = true;
+    }
   }
 
   public getUserOccurrences(): void {

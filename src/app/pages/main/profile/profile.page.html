@@ -19,7 +19,7 @@
 
       </div>
 
-      <div class="profile--modal--content--posts">
+      <div *ngIf="!isInvitedUser; else invited" class="profile--modal--content--posts">
         <div class="profile--modal--content--posts--title">
           <h4 style="font-weight: bold;">MINHAS OCORRENCIAS</h4>
         </div>
@@ -39,8 +39,11 @@
         <ng-template #loading>
           <app-half-circle-spinner></app-half-circle-spinner>
         </ng-template>
-
       </div>
+
+      <ng-template #invited>
+        <h3>Usuário invitado</h3>
+      </ng-template>
     </div>
   </div>
 </div>
