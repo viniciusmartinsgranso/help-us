@@ -32,7 +32,7 @@ export class LoginPage implements OnInit {
 
   public invitedUser: RegisterPayload = {
     id: 0,
-    name: 'Usuário',
+    name: 'Usuário Convidado',
     email: '',
     city: '',
     password: '',
